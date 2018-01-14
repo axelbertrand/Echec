@@ -11,11 +11,14 @@ package echec;
  */
 public class Echec extends javax.swing.JFrame {
 
+    private Partie partie;
+    
     /**
      * Creates new form Echec
      */
     public Echec() {
         initComponents();
+        this.partie = new Partie();
     }
 
     /**

@@ -12,6 +12,11 @@ package echec;
  */
 public class Fou extends Piece
 {
+    public Fou(Vector2 position)
+    {
+        super(position);
+    }
+    
     @Override
     public Vector2[] getCasesJouables()
     {

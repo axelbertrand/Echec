@@ -12,6 +12,11 @@ package echec;
  */
 public class Tour extends Piece
 {
+    public Tour(Vector2 position)
+    {
+        super(position);
+    }
+    
     @Override
     public Vector2[] getCasesJouables()
     {

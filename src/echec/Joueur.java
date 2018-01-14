@@ -18,16 +18,6 @@ public class Joueur
         this.pieces = pieces;
     }
     
-    public Joueur(String nom)
-    {
-        this(nom, new Piece[16]);
-    }
-    
-    public Joueur()
-    {
-        this("Joueur");
-    }
-    
     public Piece[] getPieces()
     {
         return this.pieces;

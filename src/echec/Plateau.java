@@ -12,10 +12,15 @@ package echec;
  */
 public class Plateau
 {
+    public Plateau()
+    {
+        this.grille = new Piece[8][8];
+    }
+    
     public int getCaseCliquee(Vector2 pos)
     {
         return 0;
     }
     
-    private Piece[][] grille = new Piece[8][8];
+    private Piece[][] grille;
 }
