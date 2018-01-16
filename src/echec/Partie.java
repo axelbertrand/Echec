@@ -6,6 +6,9 @@
 
 package echec;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Axel
@@ -65,7 +68,7 @@ public class Partie
         };
         
         List<Piece> piecesPlateau = new ArrayList<>(joueurs[0].getPieces());
-        piecesPlateau.add(joueurs[1].getPieces());
+        piecesPlateau.addAll(joueurs[1].getPieces());
         this.plateau = new Plateau(piecesPlateau);
     }
     

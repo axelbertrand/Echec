@@ -6,6 +6,9 @@
 
 package echec;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Axel
@@ -25,112 +28,112 @@ public class Dame extends Piece
     	
     	for(int i = position.x + 1; i < 7; i++)
     	{
-    		if(plateau.getCase(new Vector(i, position.y)) == null)
+    		if(plateau.getCase(new Vector2(i, position.y)) == null)
     		{
-    			casesJouables.add(new Vector(i, position.y));
+    			casesJouables.add(new Vector2(i, position.y));
     		}
-    		else if(plateau.getCase(new Vector(i, position.y)) != null &&
-    			plateau.getCase(new Vector(i, position.y)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(i, position.y)) != null &&
+    			plateau.getCase(new Vector2(i, position.y)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(i, position.y));
+    			casesJouables.add(new Vector2(i, position.y));
     			break;
     		}
     	}
     	
     	for(int i = position.x - 1; i > 0; i--)
     	{
-    		if(plateau.getCase(new Vector(i, position.y)) == null)
+    		if(plateau.getCase(new Vector2(i, position.y)) == null)
     		{
-    			casesJouables.add(new Vector(i, position.y));
+    			casesJouables.add(new Vector2(i, position.y));
     		}
-    		else if(plateau.getCase(new Vector(i, position.y)) != null &&
-    			plateau.getCase(new Vector(i, position.y)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(i, position.y)) != null &&
+    			plateau.getCase(new Vector2(i, position.y)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(i, position.y));
+    			casesJouables.add(new Vector2(i, position.y));
     			break;
     		}
     	}
     	
     	for(int i = position.y + 1; i < 7; i++)
     	{
-    		if(plateau.getCase(new Vector(position.x, i)) == null)
+    		if(plateau.getCase(new Vector2(position.x, i)) == null)
     		{
-    			casesJouables.add(new Vector(position.x, i));
+    			casesJouables.add(new Vector2(position.x, i));
     		}
-    		else if(plateau.getCase(new Vector(position.x, i)) != null &&
-    			plateau.getCase(new Vector(position.x, i)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(position.x, i)) != null &&
+    			plateau.getCase(new Vector2(position.x, i)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(position.x, i));
+    			casesJouables.add(new Vector2(position.x, i));
     			break;
     		}
     	}
     	
     	for(int i = position.y - 1; i > 0; i--)
     	{
-    		if(plateau.getCase(new Vector(position.x, i)) == null)
+    		if(plateau.getCase(new Vector2(position.x, i)) == null)
     		{
-    			casesJouables.add(new Vector(position.x, i));
+    			casesJouables.add(new Vector2(position.x, i));
     		}
-    		else if(plateau.getCase(new Vector(position.x, i)) != null &&
-    			plateau.getCase(new Vector(position.x, i)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(position.x, i)) != null &&
+    			plateau.getCase(new Vector2(position.x, i)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(position.x, i));
+    			casesJouables.add(new Vector2(position.x, i));
     			break;
     		}
     	}
     	
     	for(int i = position.x + 1, j = position.y + 1; i < 7 || j < 7; i++, j++)
     	{
-    		if(plateau.getCase(new Vector(i, j)) == null)
+    		if(plateau.getCase(new Vector2(i, j)) == null)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     		}
-    		else if(plateau.getCase(new Vector(i, j)) != null &&
-    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(i, j)) != null &&
+    			plateau.getCase(new Vector2(i, j)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     			break;
     		}
     	}
     	
     	for(int i = position.x - 1, j = position.y - 1; i > 0 || j > 0; i--, j--)
     	{
-    		if(plateau.getCase(new Vector(i, j)) == null)
+    		if(plateau.getCase(new Vector2(i, j)) == null)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     		}
-    		else if(plateau.getCase(new Vector(i, j)) != null &&
-    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(i, j)) != null &&
+    			plateau.getCase(new Vector2(i, j)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     			break;
     		}
     	}
     	
     	for(int i = position.x + 1, j = position.y - 1; i < 7 || i > 0; i++, j--)
     	{
-    		if(plateau.getCase(new Vector(i, j)) == null)
+    		if(plateau.getCase(new Vector2(i, j)) == null)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     		}
-    		else if(plateau.getCase(new Vector(i, j)) != null &&
-    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(i, j)) != null &&
+    			plateau.getCase(new Vector2(i, j)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     			break;
     		}
     	}
     	
     	for(int i = position.x - 1, j = position.y + 1; i > 0 || i < 7; i--, j++)
     	{
-    		if(plateau.getCase(new Vector(i, j)) == null)
+    		if(plateau.getCase(new Vector2(i, j)) == null)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     		}
-    		else if(plateau.getCase(new Vector(i, j)) != null &&
-    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		else if(plateau.getCase(new Vector2(i, j)) != null &&
+    			plateau.getCase(new Vector2(i, j)).couleur == autreCouleur)
     		{
-    			casesJouables.add(new Vector(i, j));
+    			casesJouables.add(new Vector2(i, j));
     			break;
     		}
     	}

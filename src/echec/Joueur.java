@@ -6,6 +6,10 @@
 
 package echec;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Axel
@@ -21,10 +25,10 @@ public class Joueur
     public Joueur(String nom, Piece[] pieces)
     {
         this.nom = nom;
-        this.pieces = new ArrayList<>(pieces);
+        this.pieces = new ArrayList<>(Arrays.asList(pieces));
     }
     
-    public Piece[] getPieces()
+    public List<Piece> getPieces()
     {
         return this.pieces;
     }
@@ -33,19 +37,19 @@ public class Joueur
     {
     	Piece piece = plateau.getCase(iniPos);
 
-    	// La case iniPos est une pièce du joueur
+    	// La case iniPos est une piï¿½ce du joueur
     	if(pieces.contains(piece))
     	{
-    		// La pièce jouée par le joueur peut être déplacée à la case nouvPos
+    		// La piï¿½ce jouï¿½e par le joueur peut ï¿½tre dï¿½placï¿½e ï¿½ la case nouvPos
     		if(piece.getCasesJouables(plateau).contains(nouvPos))
     		{
-    			// S'il s'agit d'une pièce de l'adversaire on la mange
+    			// S'il s'agit d'une piï¿½ce de l'adversaire on la mange
     			if(j2.getPieces().contains(plateau.getCase(nouvPos)))
     			{
-    				j2.remove(plateau.getCase(nouvPos));
-    				plateau.setcase(nouvPos, null);
+    				j2.getPieces().remove(plateau.getCase(nouvPos));
+    				plateau.setCase(nouvPos, null);
     			}
-    			// Sinon on déplace simplement la pièce jouée
+    			// Sinon on dï¿½place simplement la piï¿½ce jouï¿½e
     			else
     			{
     				plateau.setCase(iniPos, null);

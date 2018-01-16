@@ -6,6 +6,8 @@
 
 package echec;
 
+import java.util.List;
+
 /**
  *
  * @author Axel

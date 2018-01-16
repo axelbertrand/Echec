@@ -6,6 +6,9 @@
 
 package echec;
 
+import java.util.List;
+
+
 /**
  *
  * @author Axel
@@ -31,11 +34,19 @@ public abstract class Piece
     public boolean equals(Object o)
     {
     	if(this == o)
-    		return true;
+            return true;
     	
-    	return (this.position.x == o.position.x && this.position.y == o.position.y);
+        if(o instanceof Piece)
+        {
+            Piece p = (Piece)o;
+            return (this.position.x == p.position.x && this.position.y == p.position.y);
+        }
+        else
+        {
+            return false;
+        }
     }
     
-    private Vector2 position;
-    private int couleur;
+    protected Vector2 position;
+    protected int couleur;
 }
