@@ -5,6 +5,8 @@
  */
 package echec;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Axel
@@ -12,6 +14,7 @@ package echec;
 public class Echec extends javax.swing.JFrame {
 
     private Partie partie;
+    private Vector2 iniPos;
     
     /**
      * Creates new form Echec
@@ -96,217 +99,538 @@ public class Echec extends javax.swing.JFrame {
         case_47 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Jeu d'Echec");
         setPreferredSize(new java.awt.Dimension(470, 495));
 
-        case_00.setText("case");
         case_00.setActionCommand("case_01");
+        case_00.setName("00"); // NOI18N
         case_00.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_00.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_01.setText("case");
         case_01.setActionCommand("case_02");
+        case_01.setName("01"); // NOI18N
         case_01.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_02.setText("case");
+        case_02.setName("02"); // NOI18N
         case_02.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_03.setText("case");
+        case_03.setName("03"); // NOI18N
         case_03.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_03.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_04.setText("case");
         case_04.setActionCommand("case_02");
+        case_04.setName("04"); // NOI18N
         case_04.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_04.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_05.setText("case");
+        case_05.setName("05"); // NOI18N
         case_05.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_05.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_06.setText("case");
         case_06.setActionCommand("case_02");
+        case_06.setName("06"); // NOI18N
         case_06.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_06.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_07.setText("case");
+        case_07.setName("07"); // NOI18N
         case_07.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_07.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_10.setText("case");
+        case_10.setName("10"); // NOI18N
         case_10.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_11.setText("case");
+        case_11.setName("11"); // NOI18N
         case_11.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_12.setText("case");
+        case_12.setName("12"); // NOI18N
         case_12.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_13.setText("case");
+        case_13.setName("13"); // NOI18N
         case_13.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_14.setText("case");
         case_14.setActionCommand("case_02");
+        case_14.setName("14"); // NOI18N
         case_14.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_15.setText("case");
+        case_15.setName("15"); // NOI18N
         case_15.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_16.setText("case");
         case_16.setActionCommand("case_02");
+        case_16.setName("16"); // NOI18N
         case_16.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_17.setText("case");
+        case_17.setName("17"); // NOI18N
         case_17.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_20.setText("case");
+        case_20.setName("20"); // NOI18N
         case_20.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_37.setText("case");
+        case_37.setName("37"); // NOI18N
         case_37.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_21.setText("case");
+        case_21.setName("21"); // NOI18N
         case_21.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_30.setText("case");
+        case_30.setName("30"); // NOI18N
         case_30.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_31.setText("case");
+        case_31.setName("31"); // NOI18N
         case_31.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_22.setText("case");
+        case_22.setName("22"); // NOI18N
         case_22.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_32.setText("case");
+        case_32.setName("32"); // NOI18N
         case_32.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_23.setText("case");
+        case_23.setName("23"); // NOI18N
         case_23.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_33.setText("case");
+        case_33.setName("33"); // NOI18N
         case_33.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_24.setText("case");
         case_24.setActionCommand("case_02");
+        case_24.setName("24"); // NOI18N
         case_24.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_34.setText("case");
         case_34.setActionCommand("case_02");
+        case_34.setName("34"); // NOI18N
         case_34.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_25.setText("case");
+        case_25.setName("25"); // NOI18N
         case_25.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_35.setText("case");
+        case_35.setName("35"); // NOI18N
         case_35.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_26.setText("case");
         case_26.setActionCommand("case_02");
+        case_26.setName("26"); // NOI18N
         case_26.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_36.setText("case");
         case_36.setActionCommand("case_02");
+        case_36.setName("36"); // NOI18N
         case_36.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_27.setText("case");
+        case_27.setName("27"); // NOI18N
         case_27.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_40.setText("case");
+        case_40.setName("40"); // NOI18N
         case_40.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_50.setText("case");
+        case_50.setName("50"); // NOI18N
         case_50.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_60.setText("case");
+        case_60.setName("60"); // NOI18N
         case_60.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_70.setText("case");
+        case_70.setName("70"); // NOI18N
         case_70.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_70.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_71.setText("case");
+        case_71.setName("71"); // NOI18N
         case_71.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_61.setText("case");
+        case_61.setName("61"); // NOI18N
         case_61.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_51.setText("case");
+        case_51.setName("51"); // NOI18N
         case_51.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_41.setText("case");
+        case_41.setName("41"); // NOI18N
         case_41.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_42.setText("case");
+        case_42.setName("42"); // NOI18N
         case_42.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_52.setText("case");
+        case_52.setName("52"); // NOI18N
         case_52.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_62.setText("case");
+        case_62.setName("62"); // NOI18N
         case_62.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_62.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_72.setText("case");
+        case_72.setName("72"); // NOI18N
         case_72.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_73.setText("case");
+        case_73.setName("73"); // NOI18N
         case_73.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_73.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_63.setText("case");
+        case_63.setName("63"); // NOI18N
         case_63.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_53.setText("case");
+        case_53.setName("53"); // NOI18N
         case_53.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_43.setText("case");
+        case_43.setName("43"); // NOI18N
         case_43.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_44.setText("case");
         case_44.setActionCommand("case_02");
+        case_44.setName("44"); // NOI18N
         case_44.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_54.setText("case");
         case_54.setActionCommand("case_02");
+        case_54.setName("54"); // NOI18N
         case_54.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_64.setText("case");
         case_64.setActionCommand("case_02");
+        case_64.setName("64"); // NOI18N
         case_64.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_74.setText("case");
         case_74.setActionCommand("case_02");
+        case_74.setName("74"); // NOI18N
         case_74.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_74.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_75.setText("case");
+        case_75.setName("75"); // NOI18N
         case_75.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_65.setText("case");
+        case_65.setName("65"); // NOI18N
         case_65.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_65.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_55.setText("case");
+        case_55.setName("55"); // NOI18N
         case_55.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_45.setText("case");
+        case_45.setName("45"); // NOI18N
         case_45.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_46.setText("case");
         case_46.setActionCommand("case_02");
+        case_46.setName("46"); // NOI18N
         case_46.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_56.setText("case");
         case_56.setActionCommand("case_02");
+        case_56.setName("56"); // NOI18N
         case_56.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_66.setText("case");
         case_66.setActionCommand("case_02");
+        case_66.setName("66"); // NOI18N
         case_66.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_66.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_76.setText("case");
         case_76.setActionCommand("case_02");
+        case_76.setName("76"); // NOI18N
         case_76.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_76.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_77.setText("case");
+        case_77.setName("77"); // NOI18N
         case_77.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_77.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_67.setText("case");
+        case_67.setName("67"); // NOI18N
         case_67.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_67.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_57.setText("case");
+        case_57.setName("57"); // NOI18N
         case_57.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
-        case_47.setText("case");
+        case_47.setName("47"); // NOI18N
         case_47.setPreferredSize(new java.awt.Dimension(50, 50));
+        case_47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -554,6 +878,33 @@ public class Echec extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void caseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caseActionPerformed
+        JButton bouton = (JButton) evt.getSource();
+        String[] name = bouton.getName().split("");
+        Vector2 pos = new Vector2(Integer.valueOf(name[0]), Integer.valueOf(name[1]));
+        
+        if(iniPos == null)
+        {
+            iniPos = pos;
+        }
+        else
+        {
+            Vector2 nouvPos = pos;
+            // Si on clique sur la même case qu'avant on annule le coup
+            if(nouvPos.equals(iniPos))
+            {
+                iniPos = null;
+            }
+            // Sinon on joue le coup
+            else
+            {
+                partie.jouerTour(iniPos, nouvPos);
+                iniPos = null;
+            }
+        }
+    }//GEN-LAST:event_caseActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -582,10 +933,8 @@ public class Echec extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Echec().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Echec().setVisible(true);
         });
     }
 

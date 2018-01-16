@@ -37,10 +37,10 @@ public class Joueur
     {
     	Piece piece = plateau.getCase(iniPos);
 
-    	// La case iniPos est une pi�ce du joueur
+    	// La case iniPos est une pièce du joueur
     	if(pieces.contains(piece))
     	{
-    		// La pi�ce jou�e par le joueur peut �tre d�plac�e � la case nouvPos
+    		// La pièce jouée par le joueur peut être déplacée à la case nouvPos
     		if(piece.getCasesJouables(plateau).contains(nouvPos))
     		{
     			// S'il s'agit d'une pi�ce de l'adversaire on la mange
@@ -49,7 +49,7 @@ public class Joueur
     				j2.getPieces().remove(plateau.getCase(nouvPos));
     				plateau.setCase(nouvPos, null);
     			}
-    			// Sinon on d�place simplement la pi�ce jou�e
+    			// Sinon on déplace simplement la piàce jouée
     			else
     			{
     				plateau.setCase(iniPos, null);
