@@ -11,15 +11,25 @@ package echec;
  * @author Axel
  */
 public class Plateau
-{
-    public Plateau()
+{    
+    public Plateau(List<Piece> pieces)
     {
-        this.grille = new Piece[8][8];
+    	this.grille = new Piece[8][8];
+    	
+    	for(Piece piece : pieces)
+    	{
+    		this.grille[piece.getPosition().x][piece.getPosition().y] = piece;
+    	}
     }
     
-    public int getCaseCliquee(Vector2 pos)
+    public Piece getCase(Vector2 pos)
     {
-        return 0;
+        return this.grille[pos.x][pos.y];
+    }
+    
+    public void setCase(Vector2 pos, Piece piece)
+    {
+    	this.grille[pos.x][pos.y] = piece;
     }
     
     private Piece[][] grille;

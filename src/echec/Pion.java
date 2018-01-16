@@ -9,14 +9,65 @@ package echec;
 
 public class Pion extends Piece
 {
-    public Pion(Vector2 position)
+    public Pion(Vector2 position, int couleur)
     {
-        super(position);
+        super(position, couleur);
     }
     
     @Override
-    public Vector2[] getCasesJouables()
+    public List<Vector2> getCasesJouables(Plateau plateau)
     {
-        return null;
+        List<Vector2> casesJouables = new ArrayList<>();
+        
+    	if(couleur == Joueur.BLANC)
+    	{
+    		if(plateau.getCase(new Vector2(position.x, position.y - 1)) == null)
+        	{
+    			caseJouables.add(new Vector2(position.x, position.y - 1));
+        	}
+        	
+        	if(position.y == 6 && plateau.getCase(new Vector2(position.x, position.y - 2)) == null)
+        	{
+        		caseJouables.add(new Vector2(position.x, position.y - 2));
+        	}
+        	
+        	if(plateau.getCase(new Vector2(position.x - 1, position.y - 1)) != null &&
+        		plateau.getCase(new Vector2(position.x - 1, position.y - 1)).couleur == 1)
+        	{
+        		caseJouables.add(new Vector2(position.x - 1, position.y - 1));
+        	}
+        	
+        	if(plateau.getCase(new Vector2(position.x + 1, position.y - 1)) != null &&
+        		plateau.getCase(new Vector2(position.x + 1, position.y - 1)).couleur == 1)
+        	{
+        		caseJouables.add(new Vector2(position.x + 1, position.y - 1));
+        	}
+    	}
+    	else
+    	{
+    		if(plateau.getCase(new Vector2(position.x, position.y + 1)) == null)
+        	{
+    			caseJouables.add(new Vector2(position.x, position.y + 1));
+        	}
+        	
+        	if(position.y == 1 && plateau.getCase(new Vector2(position.x, position.y + 2)) == null)
+        	{
+        		caseJouables.add(new Vector2(position.x, position.y + 2));
+        	}
+        	
+        	if(plateau.getCase(new Vector2(position.x - 1, position.y + 1)) != null &&
+        		plateau.getCase(new Vector2(position.x - 1, position.y + 1)).couleur == 0)
+        	{
+        		caseJouables.add(new Vector2(position.x - 1, position.y + 1));
+        	}
+        	
+        	if(plateau.getCase(new Vector2(position.x + 1, position.y + 1)) != null &&
+        		plateau.getCase(new Vector2(position.x + 1, position.y + 1)).couleur == 0)
+        	{
+        		caseJouables.add(new Vector2(position.x + 1, position.y + 1));
+        	}
+    	}
+    	
+    	return caseJouables;
     }
 }

@@ -12,14 +12,9 @@ package echec;
  */
 public abstract class Piece
 {
-    public Piece(Vector2 position)
+    public Piece(Vector2 position, int couleur)
     {
         this.position = position;
-    }
-    
-    public Piece()
-    {
-        this(new Vector2(0, 0));
     }
     
     public Vector2 getPosition() {
@@ -30,10 +25,17 @@ public abstract class Piece
         this.position = position;
     }
     
-    public Vector2[] getCasesJouables()
+    public abstract List<Vector2> getCasesJouables(Plateau plateau);
+    
+    @Override
+    public boolean equals(Object o)
     {
-        return null;
+    	if(this == o)
+    		return true;
+    	
+    	return (this.position.x == o.position.x && this.position.y == o.position.y);
     }
     
     private Vector2 position;
+    private int couleur;
 }

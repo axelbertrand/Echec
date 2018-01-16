@@ -12,14 +12,73 @@ package echec;
  */
 public class Fou extends Piece
 {
-    public Fou(Vector2 position)
+    public Fou(Vector2 position, int couleur)
     {
-        super(position);
+        super(position, couleur);
     }
     
     @Override
-    public Vector2[] getCasesJouables()
+    public List<Vector2> getCasesJouables(Plateau plateau)
     {
-        return null;
+    	List<Vector2> casesJouables = new ArrayList<>();
+    	int autreCouleur = (couleur + 1) % 2;
+    	
+    	for(int i = position.x + 1, j = position.y + 1; i < 7 || j < 7; i++, j++)
+    	{
+    		if(plateau.getCase(new Vector(i, j)) == null)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    		}
+    		else if(plateau.getCase(new Vector(i, j)) != null &&
+    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    			break;
+    		}
+    	}
+    	
+    	for(int i = position.x - 1, j = position.y - 1; i > 0 || j > 0; i--, j--)
+    	{
+    		if(plateau.getCase(new Vector(i, j)) == null)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    		}
+    		else if(plateau.getCase(new Vector(i, j)) != null &&
+    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    			break;
+    		}
+    	}
+    	
+    	for(int i = position.x + 1, j = position.y - 1; i < 7 || i > 0; i++, j--)
+    	{
+    		if(plateau.getCase(new Vector(i, j)) == null)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    		}
+    		else if(plateau.getCase(new Vector(i, j)) != null &&
+    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    			break;
+    		}
+    	}
+    	
+    	for(int i = position.x - 1, j = position.y + 1; i > 0 || i < 7; i--, j++)
+    	{
+    		if(plateau.getCase(new Vector(i, j)) == null)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    		}
+    		else if(plateau.getCase(new Vector(i, j)) != null &&
+    			plateau.getCase(new Vector(i, j)).couleur == autreCouleur)
+    		{
+    			casesJouables.add(new Vector(i, j));
+    			break;
+    		}
+    	}
+    	
+    	return casesJouables;
     }
 }
