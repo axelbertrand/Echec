@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Cavalier extends Piece
 {
-    public Cavalier(Vector2 position, int couleur)
+    public Cavalier(Vector2 position, Couleur couleur)
     {
         super(position, couleur);
     }
@@ -23,65 +23,65 @@ public class Cavalier extends Piece
     @Override
     public List<Vector2> getCasesJouables(Plateau plateau)
     {
-    	List<Vector2> casesJouables = new ArrayList<>();
-    	int autreCouleur = (couleur + 1) % 2;
-    	
-    	if(plateau.getCase(new Vector2(position.x - 2, position.y - 1)) == null ||
-    		plateau.getCase(new Vector2(position.x - 2, position.y - 1)) != null &&
-    		plateau.getCase(new Vector2(position.x - 2, position.y - 1)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x - 2, position.y - 1));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x - 1, position.y - 2)) == null ||
-    		plateau.getCase(new Vector2(position.x - 1, position.y - 2)) != null &&
-    		plateau.getCase(new Vector2(position.x - 1, position.y - 2)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x - 1, position.y - 2));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x + 1, position.y - 2)) == null ||
-    		plateau.getCase(new Vector2(position.x + 1, position.y - 2)) != null &&
-    		plateau.getCase(new Vector2(position.x + 1, position.y - 2)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x + 1, position.y - 2));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x + 2, position.y - 1)) == null ||
-    		plateau.getCase(new Vector2(position.x + 2, position.y - 1)) != null &&
-    		plateau.getCase(new Vector2(position.x + 2, position.y - 1)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x + 2, position.y - 1));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x + 2, position.y + 1)) == null ||
-    		plateau.getCase(new Vector2(position.x + 2, position.y + 1)) != null &&
-    		plateau.getCase(new Vector2(position.x + 2, position.y + 1)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x + 2, position.y + 1));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x + 1, position.y + 2)) == null ||
-    		plateau.getCase(new Vector2(position.x + 1, position.y + 2)) != null &&
-    		plateau.getCase(new Vector2(position.x + 1, position.y + 2)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x + 1, position.y + 2));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x - 1, position.y + 2)) == null ||
-    		plateau.getCase(new Vector2(position.x - 1, position.y + 2)) != null &&
-    		plateau.getCase(new Vector2(position.x - 1, position.y + 2)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x - 1, position.y  + 2));
-    	}
-    	
-    	if(plateau.getCase(new Vector2(position.x - 2, position.y + 1)) == null ||
-    		plateau.getCase(new Vector2(position.x - 2, position.y + 1)) != null &&
-    		plateau.getCase(new Vector2(position.x - 2, position.y + 1)).couleur == autreCouleur)
-    	{
-    		casesJouables.add(new Vector2(position.x - 2, position.y + 1));
-    	}
+        List<Vector2> casesJouables = new ArrayList<>();
+        Couleur couleurOpposee = Couleur.getCouleurOpposee(couleur);
 
-    	return casesJouables;
+        if(plateau.getCase(new Vector2(position.x - 2, position.y - 1)) == null ||
+            plateau.getCase(new Vector2(position.x - 2, position.y - 1)) != null &&
+            plateau.getCase(new Vector2(position.x - 2, position.y - 1)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x - 2, position.y - 1));
+        }
+
+        if(plateau.getCase(new Vector2(position.x - 1, position.y - 2)) == null ||
+            plateau.getCase(new Vector2(position.x - 1, position.y - 2)) != null &&
+            plateau.getCase(new Vector2(position.x - 1, position.y - 2)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x - 1, position.y - 2));
+        }
+
+        if(plateau.getCase(new Vector2(position.x + 1, position.y - 2)) == null ||
+            plateau.getCase(new Vector2(position.x + 1, position.y - 2)) != null &&
+            plateau.getCase(new Vector2(position.x + 1, position.y - 2)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x + 1, position.y - 2));
+        }
+
+        if(plateau.getCase(new Vector2(position.x + 2, position.y - 1)) == null ||
+            plateau.getCase(new Vector2(position.x + 2, position.y - 1)) != null &&
+            plateau.getCase(new Vector2(position.x + 2, position.y - 1)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x + 2, position.y - 1));
+        }
+
+        if(plateau.getCase(new Vector2(position.x + 2, position.y + 1)) == null ||
+            plateau.getCase(new Vector2(position.x + 2, position.y + 1)) != null &&
+            plateau.getCase(new Vector2(position.x + 2, position.y + 1)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x + 2, position.y + 1));
+        }
+
+        if(plateau.getCase(new Vector2(position.x + 1, position.y + 2)) == null ||
+            plateau.getCase(new Vector2(position.x + 1, position.y + 2)) != null &&
+            plateau.getCase(new Vector2(position.x + 1, position.y + 2)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x + 1, position.y + 2));
+        }
+
+        if(plateau.getCase(new Vector2(position.x - 1, position.y + 2)) == null ||
+            plateau.getCase(new Vector2(position.x - 1, position.y + 2)) != null &&
+            plateau.getCase(new Vector2(position.x - 1, position.y + 2)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x - 1, position.y  + 2));
+        }
+
+        if(plateau.getCase(new Vector2(position.x - 2, position.y + 1)) == null ||
+            plateau.getCase(new Vector2(position.x - 2, position.y + 1)) != null &&
+            plateau.getCase(new Vector2(position.x - 2, position.y + 1)).couleur == couleurOpposee)
+        {
+            casesJouables.add(new Vector2(position.x - 2, position.y + 1));
+        }
+
+        return casesJouables;
     }
 }

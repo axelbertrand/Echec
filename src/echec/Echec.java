@@ -5,6 +5,12 @@
  */
 package echec;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Hashtable;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -15,13 +21,124 @@ public class Echec extends javax.swing.JFrame {
 
     private Partie partie;
     private Vector2 iniPos;
+    private JButton[][] cases = new JButton[8][8];
+    private Hashtable<String, Icon> images = new Hashtable<>();
     
     /**
      * Creates new form Echec
      */
     public Echec() {
         initComponents();
+        initCases();
+        chargerImages();
         this.partie = new Partie();
+        partie.getJoueurs()[0].getPieces().get(0).getImage();
+        updatePlateau();
+    }
+    
+    private void updatePlateau()
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                Piece p = partie.getPlateau().getCase(new Vector2(i, j));
+                Icon icon = (p != null) ? images.get(p.getImage()) : null;
+                
+                cases[i][j].setIcon(icon);
+            }
+        }
+    }
+    
+    private void initCases()
+    {
+        cases[0][0] = case_00;
+        cases[0][1] = case_01;
+        cases[0][2] = case_02;
+        cases[0][3] = case_03;
+        cases[0][4] = case_04;
+        cases[0][5] = case_05;
+        cases[0][6] = case_06;
+        cases[0][7] = case_07;
+        
+        cases[1][0] = case_10;
+        cases[1][1] = case_11;
+        cases[1][2] = case_12;
+        cases[1][3] = case_13;
+        cases[1][4] = case_14;
+        cases[1][5] = case_15;
+        cases[1][6] = case_16;
+        cases[1][7] = case_17;
+        
+        cases[2][0] = case_20;
+        cases[2][1] = case_21;
+        cases[2][2] = case_22;
+        cases[2][3] = case_23;
+        cases[2][4] = case_24;
+        cases[2][5] = case_25;
+        cases[2][6] = case_26;
+        cases[2][7] = case_27;
+        
+        cases[3][0] = case_30;
+        cases[3][1] = case_31;
+        cases[3][2] = case_32;
+        cases[3][3] = case_33;
+        cases[3][4] = case_34;
+        cases[3][5] = case_35;
+        cases[3][6] = case_36;
+        cases[3][7] = case_37;
+        
+        cases[4][0] = case_40;
+        cases[4][1] = case_41;
+        cases[4][2] = case_42;
+        cases[4][3] = case_43;
+        cases[4][4] = case_44;
+        cases[4][5] = case_45;
+        cases[4][6] = case_46;
+        cases[4][7] = case_47;
+        
+        cases[5][0] = case_50;
+        cases[5][1] = case_51;
+        cases[5][2] = case_52;
+        cases[5][3] = case_53;
+        cases[5][4] = case_54;
+        cases[5][5] = case_55;
+        cases[5][6] = case_56;
+        cases[5][7] = case_57;
+        
+        cases[6][0] = case_60;
+        cases[6][1] = case_61;
+        cases[6][2] = case_62;
+        cases[6][3] = case_63;
+        cases[6][4] = case_64;
+        cases[6][5] = case_65;
+        cases[6][6] = case_66;
+        cases[6][7] = case_67;
+        
+        cases[7][0] = case_70;
+        cases[7][1] = case_71;
+        cases[7][2] = case_72;
+        cases[7][3] = case_73;
+        cases[7][4] = case_74;
+        cases[7][5] = case_75;
+        cases[7][6] = case_76;
+        cases[7][7] = case_77;
+    }
+    
+    private void chargerImages()
+    {
+        images.put("PionBlanc", new ImageIcon("pion_blanc.png"));
+        images.put("TourBlanc", new ImageIcon("tour_blanc.png"));
+        images.put("CavalierBlanc", new ImageIcon("cavalier_blanc.png"));
+        images.put("FouBlanc", new ImageIcon("fou_blanc.png"));
+        images.put("DameBlanc", new ImageIcon("dame_blanc.png"));
+        images.put("RoiBlanc", new ImageIcon("roi_blanc.png"));
+        images.put("PionNoir", new ImageIcon("pion_noir.png"));
+        images.put("TourNoir", new ImageIcon("tour_noir.png"));
+        images.put("CavalierNoir", new ImageIcon("cavalier_noir.png"));
+        images.put("FouNoir", new ImageIcon("fou_noir.png"));
+        images.put("DameNoir", new ImageIcon("dame_noir.png"));
+        images.put("RoiNoir", new ImageIcon("roi_noir.png"));
     }
 
     /**
@@ -101,8 +218,8 @@ public class Echec extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jeu d'Echec");
         setPreferredSize(new java.awt.Dimension(470, 495));
+        setResizable(false);
 
-        case_00.setActionCommand("case_01");
         case_00.setName("00"); // NOI18N
         case_00.setPreferredSize(new java.awt.Dimension(50, 50));
         case_00.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +228,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
-        case_01.setActionCommand("case_02");
+        case_01.setBackground(new java.awt.Color(102, 102, 102));
         case_01.setName("01"); // NOI18N
         case_01.setPreferredSize(new java.awt.Dimension(50, 50));
         case_01.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +245,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_03.setBackground(new java.awt.Color(102, 102, 102));
         case_03.setName("03"); // NOI18N
         case_03.setPreferredSize(new java.awt.Dimension(50, 50));
         case_03.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +263,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_05.setBackground(new java.awt.Color(102, 102, 102));
         case_05.setName("05"); // NOI18N
         case_05.setPreferredSize(new java.awt.Dimension(50, 50));
         case_05.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +281,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_07.setBackground(new java.awt.Color(102, 102, 102));
         case_07.setName("07"); // NOI18N
         case_07.setPreferredSize(new java.awt.Dimension(50, 50));
         case_07.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +290,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_10.setBackground(new java.awt.Color(102, 102, 102));
         case_10.setName("10"); // NOI18N
         case_10.setPreferredSize(new java.awt.Dimension(50, 50));
         case_10.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +307,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_12.setBackground(new java.awt.Color(102, 102, 102));
         case_12.setName("12"); // NOI18N
         case_12.setPreferredSize(new java.awt.Dimension(50, 50));
         case_12.addActionListener(new java.awt.event.ActionListener() {
@@ -202,6 +324,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_14.setBackground(new java.awt.Color(102, 102, 102));
         case_14.setActionCommand("case_02");
         case_14.setName("14"); // NOI18N
         case_14.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -219,6 +342,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_16.setBackground(new java.awt.Color(102, 102, 102));
         case_16.setActionCommand("case_02");
         case_16.setName("16"); // NOI18N
         case_16.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -252,6 +376,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_21.setBackground(new java.awt.Color(102, 102, 102));
         case_21.setName("21"); // NOI18N
         case_21.setPreferredSize(new java.awt.Dimension(50, 50));
         case_21.addActionListener(new java.awt.event.ActionListener() {
@@ -260,6 +385,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_30.setBackground(new java.awt.Color(102, 102, 102));
         case_30.setName("30"); // NOI18N
         case_30.setPreferredSize(new java.awt.Dimension(50, 50));
         case_30.addActionListener(new java.awt.event.ActionListener() {
@@ -284,6 +410,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_32.setBackground(new java.awt.Color(102, 102, 102));
         case_32.setName("32"); // NOI18N
         case_32.setPreferredSize(new java.awt.Dimension(50, 50));
         case_32.addActionListener(new java.awt.event.ActionListener() {
@@ -292,6 +419,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_23.setBackground(new java.awt.Color(102, 102, 102));
         case_23.setName("23"); // NOI18N
         case_23.setPreferredSize(new java.awt.Dimension(50, 50));
         case_23.addActionListener(new java.awt.event.ActionListener() {
@@ -317,6 +445,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_34.setBackground(new java.awt.Color(102, 102, 102));
         case_34.setActionCommand("case_02");
         case_34.setName("34"); // NOI18N
         case_34.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -326,6 +455,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_25.setBackground(new java.awt.Color(102, 102, 102));
         case_25.setName("25"); // NOI18N
         case_25.setPreferredSize(new java.awt.Dimension(50, 50));
         case_25.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +481,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_36.setBackground(new java.awt.Color(102, 102, 102));
         case_36.setActionCommand("case_02");
         case_36.setName("36"); // NOI18N
         case_36.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -360,6 +491,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_27.setBackground(new java.awt.Color(102, 102, 102));
         case_27.setName("27"); // NOI18N
         case_27.setPreferredSize(new java.awt.Dimension(50, 50));
         case_27.addActionListener(new java.awt.event.ActionListener() {
@@ -376,6 +508,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_50.setBackground(new java.awt.Color(102, 102, 102));
         case_50.setName("50"); // NOI18N
         case_50.setPreferredSize(new java.awt.Dimension(50, 50));
         case_50.addActionListener(new java.awt.event.ActionListener() {
@@ -392,6 +525,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_70.setBackground(new java.awt.Color(102, 102, 102));
         case_70.setName("70"); // NOI18N
         case_70.setPreferredSize(new java.awt.Dimension(50, 50));
         case_70.addActionListener(new java.awt.event.ActionListener() {
@@ -408,6 +542,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_61.setBackground(new java.awt.Color(102, 102, 102));
         case_61.setName("61"); // NOI18N
         case_61.setPreferredSize(new java.awt.Dimension(50, 50));
         case_61.addActionListener(new java.awt.event.ActionListener() {
@@ -424,6 +559,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_41.setBackground(new java.awt.Color(102, 102, 102));
         case_41.setName("41"); // NOI18N
         case_41.setPreferredSize(new java.awt.Dimension(50, 50));
         case_41.addActionListener(new java.awt.event.ActionListener() {
@@ -440,6 +576,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_52.setBackground(new java.awt.Color(102, 102, 102));
         case_52.setName("52"); // NOI18N
         case_52.setPreferredSize(new java.awt.Dimension(50, 50));
         case_52.addActionListener(new java.awt.event.ActionListener() {
@@ -456,6 +593,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_72.setBackground(new java.awt.Color(102, 102, 102));
         case_72.setName("72"); // NOI18N
         case_72.setPreferredSize(new java.awt.Dimension(50, 50));
         case_72.addActionListener(new java.awt.event.ActionListener() {
@@ -472,6 +610,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_63.setBackground(new java.awt.Color(102, 102, 102));
         case_63.setName("63"); // NOI18N
         case_63.setPreferredSize(new java.awt.Dimension(50, 50));
         case_63.addActionListener(new java.awt.event.ActionListener() {
@@ -488,6 +627,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_43.setBackground(new java.awt.Color(102, 102, 102));
         case_43.setName("43"); // NOI18N
         case_43.setPreferredSize(new java.awt.Dimension(50, 50));
         case_43.addActionListener(new java.awt.event.ActionListener() {
@@ -505,6 +645,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_54.setBackground(new java.awt.Color(102, 102, 102));
         case_54.setActionCommand("case_02");
         case_54.setName("54"); // NOI18N
         case_54.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -523,6 +664,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_74.setBackground(new java.awt.Color(102, 102, 102));
         case_74.setActionCommand("case_02");
         case_74.setName("74"); // NOI18N
         case_74.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -540,6 +682,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_65.setBackground(new java.awt.Color(102, 102, 102));
         case_65.setName("65"); // NOI18N
         case_65.setPreferredSize(new java.awt.Dimension(50, 50));
         case_65.addActionListener(new java.awt.event.ActionListener() {
@@ -556,6 +699,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_45.setBackground(new java.awt.Color(102, 102, 102));
         case_45.setName("45"); // NOI18N
         case_45.setPreferredSize(new java.awt.Dimension(50, 50));
         case_45.addActionListener(new java.awt.event.ActionListener() {
@@ -573,6 +717,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_56.setBackground(new java.awt.Color(102, 102, 102));
         case_56.setActionCommand("case_02");
         case_56.setName("56"); // NOI18N
         case_56.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -591,6 +736,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_76.setBackground(new java.awt.Color(102, 102, 102));
         case_76.setActionCommand("case_02");
         case_76.setName("76"); // NOI18N
         case_76.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -608,6 +754,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_67.setBackground(new java.awt.Color(102, 102, 102));
         case_67.setName("67"); // NOI18N
         case_67.setPreferredSize(new java.awt.Dimension(50, 50));
         case_67.addActionListener(new java.awt.event.ActionListener() {
@@ -624,6 +771,7 @@ public class Echec extends javax.swing.JFrame {
             }
         });
 
+        case_47.setBackground(new java.awt.Color(102, 102, 102));
         case_47.setName("47"); // NOI18N
         case_47.setPreferredSize(new java.awt.Dimension(50, 50));
         case_47.addActionListener(new java.awt.event.ActionListener() {
@@ -871,10 +1019,6 @@ public class Echec extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        case_01.getAccessibleContext().setAccessibleName("case_02");
-        case_02.getAccessibleContext().setAccessibleName("case_03");
-        case_03.getAccessibleContext().setAccessibleName("case_04");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -900,6 +1044,7 @@ public class Echec extends javax.swing.JFrame {
             {
                 partie.jouerTour(iniPos, nouvPos);
                 iniPos = null;
+                updatePlateau();
             }
         }
     }//GEN-LAST:event_caseActionPerformed

@@ -15,9 +15,10 @@ import java.util.List;
  */
 public abstract class Piece
 {
-    public Piece(Vector2 position, int couleur)
+    public Piece(Vector2 position, Couleur couleur)
     {
         this.position = position;
+        this.couleur = couleur;
     }
     
     public Vector2 getPosition() {
@@ -30,6 +31,13 @@ public abstract class Piece
     
     public abstract List<Vector2> getCasesJouables(Plateau plateau);
     
+    public String getImage()
+    {
+        String typePiece = this.getClass().getSimpleName() + this.couleur;
+        
+        return typePiece;
+    }
+    
     @Override
     public boolean equals(Object o)
     {
@@ -39,7 +47,7 @@ public abstract class Piece
         if(o instanceof Piece)
         {
             Piece p = (Piece)o;
-            return (this.position.x == p.position.x && this.position.y == p.position.y);
+            return (this.position.equals(p.position) && this.couleur.equals(p.couleur));
         }
         else
         {
@@ -48,5 +56,5 @@ public abstract class Piece
     }
     
     protected Vector2 position;
-    protected int couleur;
+    protected Couleur couleur;
 }

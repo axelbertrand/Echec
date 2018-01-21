@@ -18,6 +18,23 @@ public class Vector2
         this.y = y;
     }
     
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this == o)
+            return true;
+    	
+        if(o instanceof Vector2)
+        {
+            Vector2 v = (Vector2)o;
+            return (this.x == v.x && this.y == v.y);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     public int x = 0;
     public int y = 0;
 }
