@@ -5,6 +5,7 @@
  */
 package echec;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -127,18 +128,19 @@ public class Echec extends javax.swing.JFrame {
     
     private void chargerImages()
     {
-        images.put("PionBlanc", new ImageIcon("pion_blanc.png"));
-        images.put("TourBlanc", new ImageIcon("tour_blanc.png"));
-        images.put("CavalierBlanc", new ImageIcon("cavalier_blanc.png"));
-        images.put("FouBlanc", new ImageIcon("fou_blanc.png"));
-        images.put("DameBlanc", new ImageIcon("dame_blanc.png"));
-        images.put("RoiBlanc", new ImageIcon("roi_blanc.png"));
-        images.put("PionNoir", new ImageIcon("pion_noir.png"));
-        images.put("TourNoir", new ImageIcon("tour_noir.png"));
-        images.put("CavalierNoir", new ImageIcon("cavalier_noir.png"));
-        images.put("FouNoir", new ImageIcon("fou_noir.png"));
-        images.put("DameNoir", new ImageIcon("dame_noir.png"));
-        images.put("RoiNoir", new ImageIcon("roi_noir.png"));
+        
+        images.put("PionBlanc", new ImageIcon(new ImageIcon("src/res/pion_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("TourBlanc", new ImageIcon(new ImageIcon("src/res/tour_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("CavalierBlanc", new ImageIcon(new ImageIcon("src/res/cavalier_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("FouBlanc", new ImageIcon(new ImageIcon("src/res/fou_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("DameBlanc", new ImageIcon(new ImageIcon("src/res/dame_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("RoiBlanc", new ImageIcon(new ImageIcon("src/res/roi_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("PionNoir", new ImageIcon(new ImageIcon("src/res/pion_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("TourNoir", new ImageIcon(new ImageIcon("src/res/tour_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("CavalierNoir", new ImageIcon(new ImageIcon("src/res/cavalier_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("FouNoir", new ImageIcon(new ImageIcon("src/res/fou_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("DameNoir", new ImageIcon(new ImageIcon("src/res/dame_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("RoiNoir", new ImageIcon(new ImageIcon("src/res/roi_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
     }
 
     /**
