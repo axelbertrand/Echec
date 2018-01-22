@@ -6,10 +6,7 @@
 package echec;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 import java.util.Hashtable;
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,7 +30,7 @@ public class Echec extends javax.swing.JFrame {
         initCases();
         chargerImages();
         this.partie = new Partie();
-        partie.getJoueurs()[0].getPieces().get(0).getImage();
+        partie.getJoueurs()[0].getPieces().get(0).getImageStr();
         updatePlateau();
     }
     
@@ -44,7 +41,7 @@ public class Echec extends javax.swing.JFrame {
             for(int j = 0; j < 8; j++)
             {
                 Piece p = partie.getPlateau().getCase(new Vector2(i, j));
-                Icon icon = (p != null) ? images.get(p.getImage()) : null;
+                Icon icon = (p != null) ? images.get(p.getImageStr()) : null;
                 
                 cases[i][j].setIcon(icon);
             }

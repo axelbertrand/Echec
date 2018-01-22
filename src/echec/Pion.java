@@ -18,59 +18,70 @@ public class Pion extends Piece
     }
     
     @Override
-    public List<Vector2> getCasesJouables(Plateau plateau)
+    public List<Vector2> getCoupsPossibles(Plateau plateau)
     {
         List<Vector2> casesJouables = new ArrayList<>();
+        
+        Vector2 avance1 = new Vector2(0, 1);
+        Vector2 avance2 = new Vector2(0, 2);
+        Vector2 priseGauche = new Vector2(-1, 1);
+        Vector2 priseDroite = new Vector2(1, 1);
+        int posDoublePas = 1;
 
         if(couleur.equals(Couleur.BLANC))
         {
-            if(plateau.getCase(new Vector2(position.x, position.y - 1)) == null)
+            avance1.y *= -1;
+            avance2.y *= -1;
+            priseGauche.y *= -1;
+            priseDroite.y *= -1;
+            posDoublePas = 6;
+        }
+        
+        avance1.add(position);
+        avance2.add(position);
+        boolean doublePasPossible = false;
+        if(plateau.estCaseValide(avance1))
+        {
+            if(plateau.getCase(avance1) == null)
             {
-                casesJouables.add(new Vector2(position.x, position.y - 1));
-            }
-
-            if(position.y == 6 && plateau.getCase(new Vector2(position.x, position.y - 2)) == null)
-            {
-                casesJouables.add(new Vector2(position.x, position.y - 2));
-            }
-
-            if(plateau.getCase(new Vector2(position.x - 1, position.y - 1)) != null &&
-                plateau.getCase(new Vector2(position.x - 1, position.y - 1)).couleur.equals(Couleur.NOIR))
-            {
-                casesJouables.add(new Vector2(position.x - 1, position.y - 1));
-            }
-
-            if(plateau.getCase(new Vector2(position.x + 1, position.y - 1)) != null &&
-                plateau.getCase(new Vector2(position.x + 1, position.y - 1)).couleur.equals(Couleur.NOIR))
-            {
-                casesJouables.add(new Vector2(position.x + 1, position.y - 1));
+                casesJouables.add(avance1);
+                doublePasPossible = true;
             }
         }
-        else
+
+        if(position.y == posDoublePas && doublePasPossible)
         {
-            if(plateau.getCase(new Vector2(position.x, position.y + 1)) == null)
+            if(plateau.estCaseValide(avance2))
             {
-                casesJouables.add(new Vector2(position.x, position.y + 1));
+                if(plateau.getCase(avance2) == null)
+                {
+                    casesJouables.add(avance2);
+                }
             }
-
-            if(position.y == 1 && plateau.getCase(new Vector2(position.x, position.y + 2)) == null)
+        }
+        
+        priseGauche.add(position);
+        priseDroite.add(position);
+        Vector2 prise = priseGauche;
+        for(int i = 0; i < 2; i++)
+        {
+            if(plateau.estCaseValide(prise))
             {
-                casesJouables.add(new Vector2(position.x, position.y + 2));
+                Piece p = plateau.getCase(prise);
+                if(p != null && !p.couleur.equals(this.couleur))
+                {
+                    casesJouables.add(prise);
+                }
             }
-
-            if(plateau.getCase(new Vector2(position.x - 1, position.y + 1)) != null &&
-                plateau.getCase(new Vector2(position.x - 1, position.y + 1)).couleur.equals(Couleur.BLANC))
-            {
-                casesJouables.add(new Vector2(position.x - 1, position.y + 1));
-            }
-
-            if(plateau.getCase(new Vector2(position.x + 1, position.y + 1)) != null &&
-                plateau.getCase(new Vector2(position.x + 1, position.y + 1)).couleur.equals(Couleur.BLANC))
-            {
-                casesJouables.add(new Vector2(position.x + 1, position.y + 1));
-            }
+            prise = priseDroite;
         }
 
         return casesJouables;
+    }
+    
+    @Override
+    public List<Vector2> getCoupsSpeciaux(Plateau plateau)
+    {
+        return new ArrayList<>();
     }
 }

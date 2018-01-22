@@ -19,14 +19,14 @@ public enum Couleur {
         this.couleur = couleur;
     }
     
+    public static Couleur getCouleurOpposee(Couleur couleur)
+    {
+        return couleur.equals(Couleur.BLANC) ? Couleur.NOIR : Couleur.BLANC;
+    }
+    
     @Override
     public String toString()
     {
         return this.couleur;
-    }
-    
-    public static Couleur getCouleurOpposee(Couleur couleur)
-    {
-        return couleur.equals(Couleur.BLANC) ? Couleur.NOIR : Couleur.BLANC;
     }
 }

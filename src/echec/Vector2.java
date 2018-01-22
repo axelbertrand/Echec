@@ -18,21 +18,43 @@ public class Vector2
         this.y = y;
     }
     
+    public Vector2(Vector2 v)
+    {
+        this.x = v.x;
+        this.y = v.y;
+    }
+    
+    public void add(Vector2 v)
+    {
+        Vector2.add(this, v);
+    }
+    
+    public static Vector2 add(Vector2 v1, Vector2 v2)
+    {
+        Vector2 v = new Vector2(v1);
+        v.x += v2.x;
+        v.y += v2.y;
+        
+        return v;
+    }
+    
     @Override
     public boolean equals(Object o)
     {
         if(this == o)
             return true;
     	
-        if(o instanceof Vector2)
-        {
-            Vector2 v = (Vector2)o;
-            return (this.x == v.x && this.y == v.y);
-        }
-        else
-        {
+        if(o == null || !(o instanceof Vector2))
             return false;
-        }
+        
+        Vector2 v = (Vector2)o;
+        return (this.x == v.x && this.y == v.y);
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "(" + this.x + ", " + this.y + ")";
     }
     
     public int x = 0;
