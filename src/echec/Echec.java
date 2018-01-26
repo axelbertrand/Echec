@@ -5,8 +5,12 @@
  */
 package echec;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Hashtable;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,7 +34,6 @@ public class Echec extends javax.swing.JFrame {
         initCases();
         chargerImages();
         this.partie = new Partie();
-        partie.getJoueurs()[0].getPieces().get(0).getImageStr();
         updatePlateau();
     }
     
@@ -40,6 +43,14 @@ public class Echec extends javax.swing.JFrame {
         {
             for(int j = 0; j < 8; j++)
             {
+                if((i + j) % 2 == 0)
+                {
+                    cases[i][j].setBackground(new Color(240, 240, 240));
+                }
+                else
+                {
+                    cases[i][j].setBackground(new Color(102, 102, 102));
+                }
                 Piece p = partie.getPlateau().getCase(new Vector2(i, j));
                 Icon icon = (p != null) ? images.get(p.getImageStr()) : null;
                 
@@ -138,6 +149,15 @@ public class Echec extends javax.swing.JFrame {
         images.put("FouNoir", new ImageIcon(new ImageIcon("src/res/fou_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
         images.put("DameNoir", new ImageIcon(new ImageIcon("src/res/dame_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
         images.put("RoiNoir", new ImageIcon(new ImageIcon("src/res/roi_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+    }
+    
+    private class ButtonActionListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent evt)
+        {
+            caseActionPerformed(evt);
+        }
     }
 
     /**
@@ -1029,22 +1049,27 @@ public class Echec extends javax.swing.JFrame {
         if(iniPos == null)
         {
             iniPos = pos;
+            Piece p = partie.getPlateau().getCase(iniPos);
+            if(partie.getJoueurActuel().getPieces().contains(p))
+            {
+                List<Vector2> casesJouables = p.getCasesJouables(partie.getPlateau());
+                for(Vector2 v : casesJouables)
+                {
+                    cases[v.x][v.y].setBackground(new Color(0, 200, 0));
+                }
+            }
+            cases[iniPos.x][iniPos.y].setEnabled(false);
         }
         else
         {
+            cases[iniPos.x][iniPos.y].setEnabled(true);
             Vector2 nouvPos = pos;
-            // Si on clique sur la même case qu'avant on annule le coup
-            if(nouvPos.equals(iniPos))
-            {
-                iniPos = null;
-            }
-            // Sinon on joue le coup
-            else
+            if(!nouvPos.equals(iniPos))
             {
                 partie.jouerTour(iniPos, nouvPos);
-                iniPos = null;
-                updatePlateau();
             }
+            iniPos = null;
+            updatePlateau();
         }
     }//GEN-LAST:event_caseActionPerformed
 

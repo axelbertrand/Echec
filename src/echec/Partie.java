@@ -6,9 +6,6 @@
 
 package echec;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Axel
@@ -30,15 +27,25 @@ public class Partie
         return this.plateau;
     }
     
-    public Joueur[] getJoueurs()
+    public Joueur getJoueurActuel()
     {
-        return this.joueurs;
+        return this.joueurs[this.joueurActuel];
     }
     
     public void jouerTour(Vector2 iniPos, Vector2 nouvPos)
     {
-        joueurs[joueurActuel].jouer(iniPos, nouvPos, this.plateau, joueurs[(joueurActuel + 1) % 2]);
-        joueurActuel = (joueurActuel + 1) % 2;
+        Piece piece = plateau.getCase(iniPos);
+
+        // La case iniPos est une pièce du joueur
+        if(getJoueurActuel().getPieces().contains(piece))
+        {
+            // La pièce jouée par le joueur peut être déplacée à la case nouvPos
+            if(piece.getCasesJouables(plateau).contains(nouvPos))
+            {
+                joueurs[joueurActuel].jouer(iniPos, nouvPos, this.plateau, joueurs[joueurActuel ^ 1].getPieces());
+                joueurActuel ^= 1;
+            }
+        }
     }
     
     private int joueurActuel;

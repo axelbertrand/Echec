@@ -56,8 +56,6 @@ public abstract class Piece
     {
         List<Vector2> cases = new ArrayList<>();
 
-        
-
         Vector2 pos;
         for(Vector2 direction : directions)
         {
@@ -76,7 +74,7 @@ public abstract class Piece
                     }
                     break;
                 }
-                cases.add(pos);
+                cases.add(new Vector2(pos));
                 pos.add(direction);
             }
         }

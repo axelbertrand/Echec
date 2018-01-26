@@ -26,7 +26,8 @@ public class Vector2
     
     public void add(Vector2 v)
     {
-        Vector2.add(this, v);
+        this.x += v.x;
+        this.y += v.y;
     }
     
     public static Vector2 add(Vector2 v1, Vector2 v2)

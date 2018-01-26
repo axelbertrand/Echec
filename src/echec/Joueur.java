@@ -33,30 +33,18 @@ public class Joueur
         return this.pieces;
     }
     
-    public void jouer(Vector2 iniPos, Vector2 nouvPos, Plateau plateau, Joueur j2)
+    public void jouer(Vector2 iniPos, Vector2 nouvPos, Plateau plateau, List<Piece> piecesJ2)
     {
-        Piece piece = plateau.getCase(iniPos);
-
-        // La case iniPos est une pièce du joueur
-        if(pieces.contains(piece))
+        // S'il s'agit d'une pièce de l'adversaire on la mange
+        if(piecesJ2.contains(plateau.getCase(nouvPos)))
         {
-            // La pièce jouée par le joueur peut être déplacée à la case nouvPos
-            if(piece.getCasesJouables(plateau).contains(nouvPos))
-            {
-                // S'il s'agit d'une pi�ce de l'adversaire on la mange
-                if(j2.getPieces().contains(plateau.getCase(nouvPos)))
-                {
-                    j2.getPieces().remove(plateau.getCase(nouvPos));
-                    plateau.setCase(nouvPos, null);
-                }
-                // Sinon on déplace simplement la piàce jouée
-                else
-                {
-                    plateau.setCase(iniPos, null);
-                    plateau.setCase(nouvPos, piece);
-                }
-            }
+            piecesJ2.remove(plateau.getCase(nouvPos));
         }
+        
+        Piece p = plateau.getCase(iniPos);
+        plateau.setCase(iniPos, null);
+        plateau.setCase(nouvPos, p);
+        p.setPosition(nouvPos);
     }
     
     private String nom;

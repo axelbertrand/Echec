@@ -22,18 +22,18 @@ public class Pion extends Piece
     {
         List<Vector2> casesJouables = new ArrayList<>();
         
-        Vector2 avance1 = new Vector2(0, 1);
-        Vector2 avance2 = new Vector2(0, 2);
-        Vector2 priseGauche = new Vector2(-1, 1);
+        Vector2 avance1 = new Vector2(1, 0);
+        Vector2 avance2 = new Vector2(2, 0);
+        Vector2 priseGauche = new Vector2(1, -1);
         Vector2 priseDroite = new Vector2(1, 1);
         int posDoublePas = 1;
 
         if(couleur.equals(Couleur.BLANC))
         {
-            avance1.y *= -1;
-            avance2.y *= -1;
-            priseGauche.y *= -1;
-            priseDroite.y *= -1;
+            avance1.x *= -1;
+            avance2.x *= -1;
+            priseGauche.x *= -1;
+            priseDroite.x *= -1;
             posDoublePas = 6;
         }
         
@@ -49,7 +49,7 @@ public class Pion extends Piece
             }
         }
 
-        if(position.y == posDoublePas && doublePasPossible)
+        if(position.x == posDoublePas && doublePasPossible)
         {
             if(plateau.estCaseValide(avance2))
             {
