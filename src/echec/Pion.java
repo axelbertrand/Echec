@@ -80,6 +80,57 @@ public class Pion extends Piece
     @Override
     public List<Vector2> getCoupsSpeciaux(Plateau plateau)
     {
-        return new ArrayList<>();
+        List<Vector2> casesJouables = new ArrayList<>();
+        
+        if((couleur.equals(Couleur.BLANC) && position.x != 3) || (couleur.equals(Couleur.NOIR) && position.x != 4))
+            return casesJouables;
+        
+        Vector2 enPassantGauche = new Vector2(1, -1);
+        Vector2 enPassantDroite = new Vector2(1, 1);
+        Vector2 posGauche = new Vector2(0, -1);
+        Vector2 posDroite = new Vector2(0, 1);
+        
+        if(couleur.equals(Couleur.BLANC))
+        {
+            enPassantGauche.x *= -1;
+            enPassantDroite.x *= -1;
+        }
+        
+        Vector2 pos = Vector2.add(position, posGauche);
+        Vector2 enPassant = Vector2.add(position, enPassantGauche);
+        for(int i = 0; i<2; i++)
+        {
+            if(plateau.estCaseValide(enPassant))
+            {
+                if (plateau.getCase(enPassant) == null)
+                {
+                    if (plateau.estCaseValide(pos))
+                    {
+                        Piece p = plateau.getCase(pos);
+                        if (p instanceof Pion)
+                        {
+                            if (!p.getCouleur().equals(couleur))
+                            {
+                                if(((Pion) p).doublePas)
+                                {
+                                    casesJouables.add(enPassant);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            pos = Vector2.add(position, posDroite);
+            enPassant = Vector2.add(position, enPassantDroite);
+        }
+        
+        return casesJouables;
     }
+    
+    public void setDoublePas(boolean dp)
+    {
+        this.doublePas = dp;
+    }
+    
+    private boolean doublePas = false;
 }

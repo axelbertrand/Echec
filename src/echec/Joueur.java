@@ -36,12 +36,13 @@ public class Joueur
     public void jouer(Vector2 iniPos, Vector2 nouvPos, Plateau plateau, List<Piece> piecesJ2)
     {
         // S'il s'agit d'une pièce de l'adversaire on la mange
-        if(piecesJ2.contains(plateau.getCase(nouvPos)))
+        Piece p = plateau.getCase(nouvPos);
+        if(piecesJ2.contains(p))
         {
-            piecesJ2.remove(plateau.getCase(nouvPos));
+            piecesJ2.remove(p);
         }
         
-        plateau.bougerPiece(iniPos, nouvPos);
+        plateau.bougerPiece(iniPos, nouvPos, piecesJ2);
     }
     
     private String nom;

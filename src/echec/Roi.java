@@ -60,9 +60,7 @@ public class Roi extends Piece
         List<Vector2> casesJouables = new ArrayList<>();
         
         if(aBouge)
-        {
             return casesJouables;
-        }
         
         Vector2 posD1 = Vector2.add(position, new Vector2(0, 1));
         Vector2 posD2 = Vector2.add(position, new Vector2(0, 2));

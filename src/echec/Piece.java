@@ -31,16 +31,12 @@ public abstract class Piece
     public void setPosition(Vector2 position)
     {
         this.position = position;
+        this.aBouge = true;
     }
     
     public Couleur getCouleur()
     {
         return this.couleur;
-    }
-    
-    public void setABouge(boolean aBouge)
-    {
-        this.aBouge = aBouge;
     }
     
     public String getImageStr()

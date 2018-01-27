@@ -71,28 +71,63 @@ public class Plateau
         this.grille[pos.x][pos.y] = piece;
     }
     
-    public void bougerPiece(Vector2 iniPos, Vector2 nouvPos)
+    public void bougerPiece(Vector2 iniPos, Vector2 nouvPos, List<Piece> piecesJ2)
     {
-        Piece p = this.getCase(iniPos);
-        this.setCase(iniPos, null);
-        this.setCase(nouvPos, p);
-        p.setPosition(nouvPos);
-        p.setABouge(true);
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                Piece piece = this.grille[i][j];
+                if(piece instanceof Pion)
+                {
+                    ((Pion) piece).setDoublePas(false);
+                }
+            }
+        }
         
-        // Gestion coups spéciaux
+        Piece p = this.getCase(iniPos);
+        
+        // Gestion coups spéciaux du roi
         if(p instanceof Roi && Math.abs(iniPos.y - nouvPos.y) == 2)
         {
             // Grand Roque
             if(iniPos.y - nouvPos.y > 0)
             {
-                bougerPiece(Vector2.add(nouvPos, new Vector2(0, -2)), Vector2.add(nouvPos, new Vector2(0, 1)));
+                bougerPiece(Vector2.add(nouvPos, new Vector2(0, -2)), Vector2.add(nouvPos, new Vector2(0, 1)), piecesJ2);
             }
             // Petit Roque
             else
             {
-                bougerPiece(Vector2.add(nouvPos, new Vector2(0, 1)), Vector2.add(nouvPos, new Vector2(0, -1)));
+                bougerPiece(Vector2.add(nouvPos, new Vector2(0, 1)), Vector2.add(nouvPos, new Vector2(0, -1)), piecesJ2);
             }
         }
+        
+        // Coups spéciaux du pion
+        else if(p instanceof Pion)
+        {
+            // Double pas
+            if(Math.abs(iniPos.x - nouvPos.x) == 2)
+            {
+                ((Pion) p).setDoublePas(true);
+            }
+            // Prise en passant
+            else if(iniPos.x == 3 || iniPos.x == 4)
+            {
+                if(iniPos.y != nouvPos.y)
+                {
+                    if(this.getCase(nouvPos) == null)
+                    {
+                        Vector2 posPrise = new Vector2(iniPos.x, nouvPos.y);
+                        piecesJ2.remove(this.getCase(posPrise));
+                        this.setCase(posPrise, null);
+                    }
+                }
+            }
+        }
+        
+        this.setCase(iniPos, null);
+        this.setCase(nouvPos, p);
+        p.setPosition(nouvPos);
     }
     
     public List<Piece> getPieces(Couleur couleur)
