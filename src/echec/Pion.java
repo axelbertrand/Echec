@@ -26,7 +26,6 @@ public class Pion extends Piece
         Vector2 avance2 = new Vector2(2, 0);
         Vector2 priseGauche = new Vector2(1, -1);
         Vector2 priseDroite = new Vector2(1, 1);
-        int posDoublePas = 1;
 
         if(couleur.equals(Couleur.BLANC))
         {
@@ -34,7 +33,6 @@ public class Pion extends Piece
             avance2.x *= -1;
             priseGauche.x *= -1;
             priseDroite.x *= -1;
-            posDoublePas = 6;
         }
         
         avance1.add(position);
@@ -49,7 +47,7 @@ public class Pion extends Piece
             }
         }
 
-        if(position.x == posDoublePas && doublePasPossible)
+        if(!aBouge && doublePasPossible)
         {
             if(plateau.estCaseValide(avance2))
             {

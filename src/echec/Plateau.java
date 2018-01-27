@@ -71,6 +71,30 @@ public class Plateau
         this.grille[pos.x][pos.y] = piece;
     }
     
+    public void bougerPiece(Vector2 iniPos, Vector2 nouvPos)
+    {
+        Piece p = this.getCase(iniPos);
+        this.setCase(iniPos, null);
+        this.setCase(nouvPos, p);
+        p.setPosition(nouvPos);
+        p.setABouge(true);
+        
+        // Gestion coups spéciaux
+        if(p instanceof Roi && Math.abs(iniPos.y - nouvPos.y) == 2)
+        {
+            // Grand Roque
+            if(iniPos.y - nouvPos.y > 0)
+            {
+                bougerPiece(Vector2.add(nouvPos, new Vector2(0, -2)), Vector2.add(nouvPos, new Vector2(0, 1)));
+            }
+            // Petit Roque
+            else
+            {
+                bougerPiece(Vector2.add(nouvPos, new Vector2(0, 1)), Vector2.add(nouvPos, new Vector2(0, -1)));
+            }
+        }
+    }
+    
     public List<Piece> getPieces(Couleur couleur)
     {
         List<Piece> pieces = new ArrayList<>();

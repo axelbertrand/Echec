@@ -41,10 +41,7 @@ public class Joueur
             piecesJ2.remove(plateau.getCase(nouvPos));
         }
         
-        Piece p = plateau.getCase(iniPos);
-        plateau.setCase(iniPos, null);
-        plateau.setCase(nouvPos, p);
-        p.setPosition(nouvPos);
+        plateau.bougerPiece(iniPos, nouvPos);
     }
     
     private String nom;

@@ -20,6 +20,7 @@ public abstract class Piece
     {
         this.position = position;
         this.couleur = couleur;
+        this.aBouge = false;
     }
     
     public Vector2 getPosition()
@@ -35,6 +36,11 @@ public abstract class Piece
     public Couleur getCouleur()
     {
         return this.couleur;
+    }
+    
+    public void setABouge(boolean aBouge)
+    {
+        this.aBouge = aBouge;
     }
     
     public String getImageStr()
@@ -100,4 +106,5 @@ public abstract class Piece
     
     protected Vector2 position;
     protected Couleur couleur;
+    protected boolean aBouge;
 }
