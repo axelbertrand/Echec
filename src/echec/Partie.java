@@ -18,7 +18,7 @@ public class Partie
         this.plateau = new Plateau();
         this.joueurs = new Joueur[] {
             new Joueur("Joueur 1", this.plateau.getPieces(Couleur.BLANC)),
-            new Joueur("Joueur 1", this.plateau.getPieces(Couleur.NOIR))
+            new Joueur("Joueur 2", this.plateau.getPieces(Couleur.NOIR))
         };
     }
     
@@ -32,7 +32,7 @@ public class Partie
         return this.joueurs[this.joueurActuel];
     }
     
-    public void jouerTour(Vector2 iniPos, Vector2 nouvPos)
+    public boolean jouerTour(Vector2 iniPos, Vector2 nouvPos)
     {
         Piece piece = plateau.getCase(iniPos);
 
@@ -42,10 +42,14 @@ public class Partie
             // La pièce jouée par le joueur peut être déplacée à la case nouvPos
             if(piece.getCasesJouables(plateau).contains(nouvPos))
             {
-                joueurs[joueurActuel].jouer(iniPos, nouvPos, this.plateau, joueurs[joueurActuel ^ 1].getPieces());
+                if(joueurs[joueurActuel].jouer(iniPos, nouvPos, this.plateau, joueurs[joueurActuel ^ 1].getPieces()))
+                    return true;
+                
                 joueurActuel ^= 1;
             }
         }
+        
+        return false;
     }
     
     private int joueurActuel;

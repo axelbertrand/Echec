@@ -14,6 +14,7 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,7 +105,10 @@ public class Echec extends javax.swing.JFrame {
                 Vector2 nouvPos = pos;
                 if(!nouvPos.equals(iniPos))
                 {
-                    partie.jouerTour(iniPos, nouvPos);
+                    if(partie.jouerTour(iniPos, nouvPos))
+                    {
+                        JOptionPane.showMessageDialog(null, partie.getJoueurActuel().getNom() + " a gagné !");
+                    }
                 }
                 iniPos = null;
                 updatePlateau();

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Joueur
 {
-	public Joueur(String nom, List<Piece> pieces)
+    public Joueur(String nom, List<Piece> pieces)
     {
         this.nom = nom;
         this.pieces = pieces;
@@ -28,12 +28,17 @@ public class Joueur
         this.pieces = new ArrayList<>(Arrays.asList(pieces));
     }
     
+    public String getNom()
+    {
+        return this.nom;
+    }
+    
     public List<Piece> getPieces()
     {
         return this.pieces;
     }
     
-    public void jouer(Vector2 iniPos, Vector2 nouvPos, Plateau plateau, List<Piece> piecesJ2)
+    public boolean jouer(Vector2 iniPos, Vector2 nouvPos, Plateau plateau, List<Piece> piecesJ2)
     {
         // S'il s'agit d'une pièce de l'adversaire on la mange
         Piece p = plateau.getCase(nouvPos);
@@ -42,7 +47,7 @@ public class Joueur
             piecesJ2.remove(p);
         }
         
-        plateau.bougerPiece(iniPos, nouvPos, piecesJ2);
+        return plateau.bougerPiece(iniPos, nouvPos, piecesJ2);
     }
     
     private String nom;

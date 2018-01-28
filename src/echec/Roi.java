@@ -35,18 +35,21 @@ public class Roi extends Piece
                 Vector2 pos = Vector2.add(position, new Vector2(i, j));
                 if(plateau.estCaseValide(pos))
                 {
-                    Piece p = plateau.getCase(pos);
-                    if(p != null)
-                    {
-                        if(!p.couleur.equals(this.couleur))
+                    //if(!plateau.estMenacee(pos))
+                    //{
+                        Piece p = plateau.getCase(pos);
+                        if(p != null)
+                        {
+                            if(!p.couleur.equals(this.couleur))
+                            {
+                                casesJouables.add(pos);
+                            }
+                        }
+                        else
                         {
                             casesJouables.add(pos);
                         }
-                    }
-                    else
-                    {
-                        casesJouables.add(pos);
-                    }
+                    //}
                 }
             }
         }

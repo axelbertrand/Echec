@@ -71,8 +71,45 @@ public class Plateau
         this.grille[pos.x][pos.y] = piece;
     }
     
-    public void bougerPiece(Vector2 iniPos, Vector2 nouvPos, List<Piece> piecesJ2)
+    public boolean estMenacee(Vector2 pos)
     {
+        if(this.estCaseValide(pos))
+        {
+            if(this.getCase(pos) != null)
+            {
+                Couleur couleur = this.getCase(pos).getCouleur();
+
+                for(int i = 0; i < 8; i++)
+                {
+                    for(int j = 0; j < 8; j++)
+                    {
+                        Piece p = this.getCase(new Vector2(i, j));
+                        if(p != null)
+                        {
+                            if(!p.getCouleur().equals(couleur))
+                            {
+                                List<Vector2> casesMenacees = p.getCasesJouables(this);
+                                if(casesMenacees.contains(pos))
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    public boolean bougerPiece(Vector2 iniPos, Vector2 nouvPos, List<Piece> piecesJ2)
+    {
+        if(this.getCase(nouvPos) instanceof Roi)
+        {
+            return true;
+        }
+        
         for(int i = 0; i < 8; i++)
         {
             for(int j = 0; j < 8; j++)
@@ -128,6 +165,8 @@ public class Plateau
         this.setCase(iniPos, null);
         this.setCase(nouvPos, p);
         p.setPosition(nouvPos);
+        
+        return false;
     }
     
     public List<Piece> getPieces(Couleur couleur)
