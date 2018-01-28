@@ -9,12 +9,15 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Hashtable;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -22,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class Echec extends javax.swing.JFrame {
 
-    private Partie partie;
+    private Partie partie = null;
     private Vector2 iniPos;
     private JButton[][] cases = new JButton[8][8];
     private Hashtable<String, Icon> images = new Hashtable<>();
@@ -33,7 +36,33 @@ public class Echec extends javax.swing.JFrame {
     public Echec() {
         initComponents();
         chargerImages();
-        this.partie = new Partie();
+        
+        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous charger une configuration ?", "Choix de la configuration", JOptionPane.YES_NO_OPTION);
+        
+        try
+        {
+            if(reponse == JOptionPane.YES_OPTION)
+            {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new File("src/res/configs"));
+                int returnVal = chooser.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION)
+                {
+                   this.partie = new Partie(chooser.getCurrentDirectory() + "/" + chooser.getSelectedFile().getName());
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Impossible de charger la configuration : " + e.getMessage(), "Erreur de lecture de la configuration", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if(this.partie == null)
+        {
+            this.partie = new Partie();
+        }
+        
         updatePlateau();
     }
     
@@ -62,18 +91,18 @@ public class Echec extends javax.swing.JFrame {
     private void chargerImages()
     {
         
-        images.put("PionBlanc", new ImageIcon(new ImageIcon("src/res/pion_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("TourBlanc", new ImageIcon(new ImageIcon("src/res/tour_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("CavalierBlanc", new ImageIcon(new ImageIcon("src/res/cavalier_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("FouBlanc", new ImageIcon(new ImageIcon("src/res/fou_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("DameBlanc", new ImageIcon(new ImageIcon("src/res/dame_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("RoiBlanc", new ImageIcon(new ImageIcon("src/res/roi_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("PionNoir", new ImageIcon(new ImageIcon("src/res/pion_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("TourNoir", new ImageIcon(new ImageIcon("src/res/tour_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("CavalierNoir", new ImageIcon(new ImageIcon("src/res/cavalier_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("FouNoir", new ImageIcon(new ImageIcon("src/res/fou_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("DameNoir", new ImageIcon(new ImageIcon("src/res/dame_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("RoiNoir", new ImageIcon(new ImageIcon("src/res/roi_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("PionBlanc", new ImageIcon(new ImageIcon("src/res/images/pion_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("TourBlanc", new ImageIcon(new ImageIcon("src/res/images/tour_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("CavalierBlanc", new ImageIcon(new ImageIcon("src/res/images/cavalier_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("FouBlanc", new ImageIcon(new ImageIcon("src/res/images/fou_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("DameBlanc", new ImageIcon(new ImageIcon("src/res/images/dame_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("RoiBlanc", new ImageIcon(new ImageIcon("src/res/images/roi_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("PionNoir", new ImageIcon(new ImageIcon("src/res/images/pion_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("TourNoir", new ImageIcon(new ImageIcon("src/res/images/tour_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("CavalierNoir", new ImageIcon(new ImageIcon("src/res/images/cavalier_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("FouNoir", new ImageIcon(new ImageIcon("src/res/images/fou_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("DameNoir", new ImageIcon(new ImageIcon("src/res/images/dame_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        images.put("RoiNoir", new ImageIcon(new ImageIcon("src/res/images/roi_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
     }
     
     private class ButtonActionListener implements ActionListener
