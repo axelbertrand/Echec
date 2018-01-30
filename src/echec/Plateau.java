@@ -19,30 +19,30 @@ public class Plateau
     {
         this.grille = new Piece[8][8];
 
-        this.grille[7][0] = new Tour(new Vector2(7, 0), Couleur.BLANC);
-        this.grille[7][1] = new Cavalier(new Vector2(7, 1), Couleur.BLANC);
-        this.grille[7][2] = new Fou(new Vector2(7, 2), Couleur.BLANC);
-        this.grille[7][3] = new Dame(new Vector2(7, 3), Couleur.BLANC);
-        this.grille[7][4] = new Roi(new Vector2(7, 4), Couleur.BLANC);
-        this.grille[7][5] = new Fou(new Vector2(7, 5), Couleur.BLANC);
-        this.grille[7][6] = new Cavalier(new Vector2(7, 6), Couleur.BLANC);
-        this.grille[7][7] = new Tour(new Vector2(7, 7), Couleur.BLANC);
+        this.grille[0][0] = new Tour(new Vector2(0, 0), Couleur.BLANC);
+        this.grille[0][1] = new Cavalier(new Vector2(0, 1), Couleur.BLANC);
+        this.grille[0][2] = new Fou(new Vector2(0, 2), Couleur.BLANC);
+        this.grille[0][3] = new Dame(new Vector2(0, 3), Couleur.BLANC);
+        this.grille[0][4] = new Roi(new Vector2(0, 4), Couleur.BLANC);
+        this.grille[0][5] = new Fou(new Vector2(0, 5), Couleur.BLANC);
+        this.grille[0][6] = new Cavalier(new Vector2(0, 6), Couleur.BLANC);
+        this.grille[0][7] = new Tour(new Vector2(0, 7), Couleur.BLANC);
         for(int i = 0; i < 8; i++)
         {
-            this.grille[6][i] = new Pion(new Vector2(6, i), Couleur.BLANC);
+            this.grille[1][i] = new Pion(new Vector2(1, i), Couleur.BLANC);
         }
         
-        this.grille[0][0] = new Tour(new Vector2(0, 0), Couleur.NOIR);
-        this.grille[0][1] = new Cavalier(new Vector2(0, 1), Couleur.NOIR);
-        this.grille[0][2] = new Fou(new Vector2(0, 2), Couleur.NOIR);
-        this.grille[0][3] = new Dame(new Vector2(0, 3), Couleur.NOIR);
-        this.grille[0][4] = new Roi(new Vector2(0, 4), Couleur.NOIR);
-        this.grille[0][5] = new Fou(new Vector2(0, 5), Couleur.NOIR);
-        this.grille[0][6] = new Cavalier(new Vector2(0, 6), Couleur.NOIR);
-        this.grille[0][7] = new Tour(new Vector2(0, 7), Couleur.NOIR);
+        this.grille[7][0] = new Tour(new Vector2(7, 0), Couleur.NOIR);
+        this.grille[7][1] = new Cavalier(new Vector2(7, 1), Couleur.NOIR);
+        this.grille[7][2] = new Fou(new Vector2(7, 2), Couleur.NOIR);
+        this.grille[7][3] = new Dame(new Vector2(7, 3), Couleur.NOIR);
+        this.grille[7][4] = new Roi(new Vector2(7, 4), Couleur.NOIR);
+        this.grille[7][5] = new Fou(new Vector2(7, 5), Couleur.NOIR);
+        this.grille[7][6] = new Cavalier(new Vector2(7, 6), Couleur.NOIR);
+        this.grille[7][7] = new Tour(new Vector2(7, 7), Couleur.NOIR);
         for(int i = 0; i < 8; i++)
         {
-            this.grille[1][i] = new Pion(new Vector2(1, i), Couleur.NOIR);
+            this.grille[6][i] = new Pion(new Vector2(6, i), Couleur.NOIR);
         }
     }
     

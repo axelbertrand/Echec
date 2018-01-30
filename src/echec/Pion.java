@@ -22,10 +22,10 @@ public class Pion extends Piece
     {
         List<Vector2> casesJouables = new ArrayList<>();
         
-        Vector2 avance1 = new Vector2(1, 0);
-        Vector2 avance2 = new Vector2(2, 0);
-        Vector2 priseGauche = new Vector2(1, -1);
-        Vector2 priseDroite = new Vector2(1, 1);
+        Vector2 avance1 = new Vector2(-1, 0);
+        Vector2 avance2 = new Vector2(-2, 0);
+        Vector2 priseGauche = new Vector2(-1, -1);
+        Vector2 priseDroite = new Vector2(-1, 1);
 
         if(couleur.equals(Couleur.BLANC))
         {
@@ -82,11 +82,11 @@ public class Pion extends Piece
     {
         List<Vector2> casesJouables = new ArrayList<>();
         
-        if((couleur.equals(Couleur.BLANC) && position.x != 3) || (couleur.equals(Couleur.NOIR) && position.x != 4))
+        if((couleur.equals(Couleur.BLANC) && position.x != 4) || (couleur.equals(Couleur.NOIR) && position.x != 3))
             return casesJouables;
         
-        Vector2 enPassantGauche = new Vector2(1, -1);
-        Vector2 enPassantDroite = new Vector2(1, 1);
+        Vector2 enPassantGauche = new Vector2(-1, -1);
+        Vector2 enPassantDroite = new Vector2(-1, 1);
         Vector2 posGauche = new Vector2(0, -1);
         Vector2 posDroite = new Vector2(0, 1);
         
@@ -98,7 +98,7 @@ public class Pion extends Piece
         
         Vector2 pos = Vector2.add(position, posGauche);
         Vector2 enPassant = Vector2.add(position, enPassantGauche);
-        for(int i = 0; i<2; i++)
+        for(int i = 0; i < 2; i++)
         {
             if(plateau.estCaseValide(enPassant))
             {
