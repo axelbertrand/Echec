@@ -8,6 +8,7 @@ package echec;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -103,7 +104,7 @@ public class Plateau
         return false;
     }
     
-    public boolean bougerPiece(Vector2 iniPos, Vector2 nouvPos, List<Piece> piecesJ2)
+    public boolean bougerPiece(Vector2 iniPos, Vector2 nouvPos)
     {
         if(this.getCase(nouvPos) instanceof Roi)
         {
@@ -130,12 +131,12 @@ public class Plateau
             // Grand Roque
             if(iniPos.y - nouvPos.y > 0)
             {
-                bougerPiece(Vector2.add(nouvPos, new Vector2(0, -2)), Vector2.add(nouvPos, new Vector2(0, 1)), piecesJ2);
+                bougerPiece(Vector2.add(nouvPos, new Vector2(0, -2)), Vector2.add(nouvPos, new Vector2(0, 1)));
             }
             // Petit Roque
             else
             {
-                bougerPiece(Vector2.add(nouvPos, new Vector2(0, 1)), Vector2.add(nouvPos, new Vector2(0, -1)), piecesJ2);
+                bougerPiece(Vector2.add(nouvPos, new Vector2(0, 1)), Vector2.add(nouvPos, new Vector2(0, -1)));
             }
         }
         
@@ -155,10 +156,36 @@ public class Plateau
                     if(this.getCase(nouvPos) == null)
                     {
                         Vector2 posPrise = new Vector2(iniPos.x, nouvPos.y);
-                        piecesJ2.remove(this.getCase(posPrise));
                         this.setCase(posPrise, null);
                     }
                 }
+            }
+            // Promotion du pion
+            else if(p.getCouleur().equals(Couleur.NOIR) && nouvPos.x == 0 || p.getCouleur().equals(Couleur.BLANC) && nouvPos.x == 7)
+            {
+                Object[] options = new Object[] {"Dame", "Tour", "Cavalier", "Fou"};
+                String retour = (String) JOptionPane.showInputDialog(null, "Choisissez une pièce pour la promotion du pion", "Promotion du pion", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch(retour)
+                {
+                    case "Dame" :
+                        Dame d = new Dame(nouvPos, p.getCouleur());
+                        this.setCase(nouvPos, d);
+                        break;
+                    case "Tour" :
+                        Tour t = new Tour(nouvPos, p.getCouleur());
+                        this.setCase(nouvPos, t);
+                        break;
+                    case "Cavalier" :
+                        Cavalier c = new Cavalier(nouvPos, p.getCouleur());
+                        this.setCase(nouvPos, c);
+                        break;
+                    case "Fou" :
+                        Fou f = new Fou(nouvPos, p.getCouleur());
+                        this.setCase(nouvPos, f);
+                        break;
+                }
+                this.setCase(iniPos, null);
+                return false;
             }
         }
         

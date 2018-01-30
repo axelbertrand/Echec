@@ -20,23 +20,15 @@ public class Partie
 {
     public Partie()
     {
-        this.joueurActuel = 0;
+        this.joueurActuel = Couleur.BLANC;
         this.plateau = new Plateau();
-        this.joueurs = new Joueur[] {
-            new Joueur("Joueur 1", this.plateau.getPieces(Couleur.BLANC)),
-            new Joueur("Joueur 2", this.plateau.getPieces(Couleur.NOIR))
-        };
     }
     
     public Partie(String nomFichier) throws Exception
     {
         System.out.println("nomFichier = " + nomFichier);
-        this.joueurActuel = 0;
+        this.joueurActuel = Couleur.BLANC;
         this.plateau = new Plateau(chargerConfiguration(nomFichier));
-        this.joueurs = new Joueur[] {
-            new Joueur("Joueur 1", this.plateau.getPieces(Couleur.BLANC)),
-            new Joueur("Joueur 2", this.plateau.getPieces(Couleur.NOIR))
-        };
     }
     
     public Plateau getPlateau()
@@ -44,9 +36,9 @@ public class Partie
         return this.plateau;
     }
     
-    public Joueur getJoueurActuel()
+    public Couleur getJoueurActuel()
     {
-        return this.joueurs[this.joueurActuel];
+        return this.joueurActuel;
     }
     
     public boolean jouerTour(Vector2 iniPos, Vector2 nouvPos)
@@ -54,15 +46,17 @@ public class Partie
         Piece piece = plateau.getCase(iniPos);
 
         // La case iniPos est une pièce du joueur
-        if(getJoueurActuel().getPieces().contains(piece))
+        if(plateau.getPieces(joueurActuel).contains(piece))
         {
             // La pièce jouée par le joueur peut être déplacée à la case nouvPos
             if(piece.getCasesJouables(plateau).contains(nouvPos))
             {
-                if(joueurs[joueurActuel].jouer(iniPos, nouvPos, this.plateau, joueurs[joueurActuel ^ 1].getPieces()))
+                Couleur j2 = Couleur.getCouleurOpposee(joueurActuel);
+
+                if(plateau.bougerPiece(iniPos, nouvPos))
                     return true;
                 
-                joueurActuel ^= 1;
+                joueurActuel = j2;
             }
         }
         
@@ -186,7 +180,6 @@ public class Partie
         return p;
     }
     
-    private int joueurActuel;
+    private Couleur joueurActuel;
     private Plateau plateau;
-    private Joueur[] joueurs;
 }

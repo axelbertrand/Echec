@@ -118,7 +118,7 @@ public class Echec extends javax.swing.JFrame {
             {
                 iniPos = pos;
                 Piece p = partie.getPlateau().getCase(iniPos);
-                if(partie.getJoueurActuel().getPieces().contains(p))
+                if(partie.getPlateau().getPieces(partie.getJoueurActuel()).contains(p))
                 {
                     List<Vector2> casesJouables = p.getCasesJouables(partie.getPlateau());
                     for(Vector2 v : casesJouables)
@@ -136,7 +136,7 @@ public class Echec extends javax.swing.JFrame {
                 {
                     if(partie.jouerTour(iniPos, nouvPos))
                     {
-                        JOptionPane.showMessageDialog(null, partie.getJoueurActuel().getNom() + " a gagné !");
+                        JOptionPane.showMessageDialog(null, "Le Joueur " + partie.getJoueurActuel() + " a gagné !");
                     }
                 }
                 iniPos = null;
