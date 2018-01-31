@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -26,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Echec extends javax.swing.JFrame {
 
     private Partie partie = null;
-    private Vector2 iniPos;
+    private Vector2 iniPos, nouvPos;
     private JButton[][] cases = new JButton[8][8];
     private Hashtable<String, Icon> images = new Hashtable<>();
     
@@ -36,31 +35,25 @@ public class Echec extends javax.swing.JFrame {
     public Echec() {
         initComponents();
         chargerImages();
+        IAAbstraite ia = choixModeJeu();
+        String config = chargerConfiguration();
         
-        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous charger une configuration ?", "Choix de la configuration", JOptionPane.YES_NO_OPTION);
-        
-        try
+        if(config == null)
         {
-            if(reponse == JOptionPane.YES_OPTION)
+            this.partie = new Partie(ia);
+        }
+        else
+        {
+            try
             {
-                JFileChooser chooser = new JFileChooser();
-                chooser.setCurrentDirectory(new File("src/res/configs"));
-                int returnVal = chooser.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION)
-                {
-                   this.partie = new Partie(chooser.getCurrentDirectory() + "/" + chooser.getSelectedFile().getName());
-                }
+                this.partie = new Partie(config, ia);
             }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Impossible de charger la configuration : " + e.getMessage(), "Erreur de lecture de la configuration", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        if(this.partie == null)
-        {
-            this.partie = new Partie();
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Impossible de charger la configuration : " + e.getMessage(), "Erreur de lecture de la configuration", JOptionPane.ERROR_MESSAGE);
+                this.partie = new Partie(ia);
+            }
         }
         
         updatePlateau();
@@ -105,6 +98,36 @@ public class Echec extends javax.swing.JFrame {
         images.put("RoiNoir", new ImageIcon(new ImageIcon("src/res/images/roi_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
     }
     
+    private IAAbstraite choixModeJeu()
+    {
+        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous jouer contre l'ordinateur ?", "Choix du mode de jeu", JOptionPane.YES_NO_OPTION);
+
+        if(reponse == JOptionPane.YES_OPTION)
+        {
+            return new IAAleatoire(Couleur.NOIR);
+        }
+
+        return null;
+    }
+    
+    private String chargerConfiguration()
+    {
+        int reponse = JOptionPane.showConfirmDialog(null, "Voulez-vous charger une configuration ?", "Choix de la configuration", JOptionPane.YES_NO_OPTION);
+
+        if(reponse == JOptionPane.YES_OPTION)
+        {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new File("src/res/configs"));
+            int returnVal = chooser.showOpenDialog(null);
+            if(returnVal == JFileChooser.APPROVE_OPTION)
+            {
+               return (chooser.getCurrentDirectory() + "/" + chooser.getSelectedFile().getName());
+            }
+        }
+
+        return null;
+    }
+    
     private class ButtonActionListener implements ActionListener
     {
         @Override
@@ -113,7 +136,7 @@ public class Echec extends javax.swing.JFrame {
             JButton bouton = (JButton) evt.getSource();
             String[] name = bouton.getName().split("");
             Vector2 pos = new Vector2(Integer.valueOf(name[0]), Integer.valueOf(name[1]));
-
+            
             if(iniPos == null)
             {
                 iniPos = pos;
@@ -131,7 +154,7 @@ public class Echec extends javax.swing.JFrame {
             else
             {
                 cases[iniPos.x][iniPos.y].setEnabled(true);
-                Vector2 nouvPos = pos;
+                nouvPos = pos;
                 if(!nouvPos.equals(iniPos))
                 {
                     if(partie.jouerTour(iniPos, nouvPos))
@@ -140,6 +163,19 @@ public class Echec extends javax.swing.JFrame {
                     }
                 }
                 iniPos = null;
+                updatePlateau();
+            }
+            
+            IAAbstraite ia = partie.getIA();
+            
+            if(ia != null && partie.getJoueurActuel().equals(ia.getCouleur()))
+            {
+                Vector2[] tabPos = ia.getCoupIA(partie.getPlateau());
+                
+                if(partie.jouerTour(tabPos[0], tabPos[1]))
+                {
+                    JOptionPane.showMessageDialog(null, "Le Joueur " + partie.getJoueurActuel() + " a gagné !");
+                }
                 updatePlateau();
             }
         }

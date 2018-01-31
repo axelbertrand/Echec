@@ -22,6 +22,7 @@ public class Partie
     {
         this.joueurActuel = Couleur.BLANC;
         this.plateau = new Plateau();
+        this.ia = null;
     }
     
     public Partie(String nomFichier) throws Exception
@@ -29,6 +30,22 @@ public class Partie
         System.out.println("nomFichier = " + nomFichier);
         this.joueurActuel = Couleur.BLANC;
         this.plateau = new Plateau(chargerConfiguration(nomFichier));
+        this.ia = null;
+    }
+    
+    public Partie(IAAbstraite ia)
+    {
+        this.joueurActuel = Couleur.BLANC;
+        this.plateau = new Plateau();
+        this.ia = ia;
+    }
+    
+    public Partie(String nomFichier, IAAbstraite ia) throws Exception
+    {
+        System.out.println("nomFichier = " + nomFichier);
+        this.joueurActuel = Couleur.BLANC;
+        this.plateau = new Plateau(chargerConfiguration(nomFichier));
+        this.ia = ia;
     }
     
     public Plateau getPlateau()
@@ -39,6 +56,11 @@ public class Partie
     public Couleur getJoueurActuel()
     {
         return this.joueurActuel;
+    }
+    
+    public IAAbstraite getIA()
+    {
+        return this.ia;
     }
     
     public boolean jouerTour(Vector2 iniPos, Vector2 nouvPos)
@@ -182,4 +204,5 @@ public class Partie
     
     private Couleur joueurActuel;
     private Plateau plateau;
+    private IAAbstraite ia;
 }
