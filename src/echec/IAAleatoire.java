@@ -29,23 +29,32 @@ public class IAAleatoire extends IAAbstraite
         
         int x, y;
         Piece p;
+        List<Vector2> coupsJouables;
+        int i = 0;
+        int maxIteration = 10;
         do
         {
             x = rnd.nextInt(8);
             y = rnd.nextInt(8);
             tabPos[0] = new Vector2(x, y);
             p = plateau.getCase(tabPos[0]);
+            if(p != null)
+            {
+                coupsJouables = p.getCoupsPossibles(plateau);
+                do
+                {
+                    x = rnd.nextInt(8);
+                    y = rnd.nextInt(8);
+                    tabPos[1] = new Vector2(x, y);
+                    i++;
+                }
+                while(!coupsJouables.contains(tabPos[1]) || i < maxIteration);
+            }
         }
-        while(p == null || !pieces.contains(p));
+        while(!pieces.contains(p));
         
-        List<Vector2> coupsJouables = p.getCoupsPossibles(plateau);
-        do
-        {
-            x = rnd.nextInt(8);
-            y = rnd.nextInt(8);
-            tabPos[1] = new Vector2(x, y);
-        }
-        while(!coupsJouables.contains(tabPos[1]));
+        
+        
         
         return tabPos;
     }

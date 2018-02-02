@@ -4,16 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Cavalier.java</file>
-            <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Pion.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Tour.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Fou.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Echec.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Couleur.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Partie.java</file>
+            <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Plateau.java</file>
+            <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/IAAleatoire.java</file>
+            <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Pion.java</file>
+            <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/IAAbstraite.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Roi.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Vector2.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Dame.java</file>
-            <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Plateau.java</file>
             <file>file:/D:/Mes%20Documents/GitHub/Echec/src/echec/Piece.java</file>
         </group>
     </open-files>
