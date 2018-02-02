@@ -21,7 +21,7 @@ public class Roi extends Piece
     }
     
     @Override
-    public List<Vector2> getCoupsPossibles(Plateau plateau)
+    protected List<Vector2> getCoupsPossibles(Plateau plateau)
     {
         List<Vector2> casesJouables = new ArrayList<>();
         
@@ -35,21 +35,18 @@ public class Roi extends Piece
                 Vector2 pos = Vector2.add(position, new Vector2(i, j));
                 if(plateau.estCaseValide(pos))
                 {
-                    //if(!plateau.estMenacee(pos))
-                    //{
-                        Piece p = plateau.getCase(pos);
-                        if(p != null)
-                        {
-                            if(!p.couleur.equals(this.couleur))
-                            {
-                                casesJouables.add(pos);
-                            }
-                        }
-                        else
+                    Piece p = plateau.getCase(pos);
+                    if(p != null)
+                    {
+                        if(!p.couleur.equals(this.couleur))
                         {
                             casesJouables.add(pos);
                         }
-                    //}
+                    }
+                    else
+                    {
+                        casesJouables.add(pos);
+                    }
                 }
             }
         }
@@ -58,7 +55,7 @@ public class Roi extends Piece
     }
     
     @Override
-    public List<Vector2> getCoupsSpeciaux(Plateau plateau)
+    protected List<Vector2> getCoupsSpeciaux(Plateau plateau)
     {
         List<Vector2> casesJouables = new ArrayList<>();
         

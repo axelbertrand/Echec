@@ -53,9 +53,6 @@ public class IAAleatoire extends IAAbstraite
         }
         while(!pieces.contains(p));
         
-        
-        
-        
         return tabPos;
     }
     

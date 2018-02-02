@@ -21,7 +21,7 @@ public class Tour extends Piece
     }
     
     @Override
-    public List<Vector2> getCoupsPossibles(Plateau plateau)
+    protected List<Vector2> getCoupsPossibles(Plateau plateau)
     {
         List<Vector2> casesJouables = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class Tour extends Piece
     }
     
     @Override
-    public List<Vector2> getCoupsSpeciaux(Plateau plateau)
+    protected List<Vector2> getCoupsSpeciaux(Plateau plateau)
     {
         return new ArrayList<>();
     }
