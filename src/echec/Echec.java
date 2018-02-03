@@ -83,19 +83,26 @@ public class Echec extends javax.swing.JFrame {
     
     private void chargerImages()
     {
-        
-        images.put("PionBlanc", new ImageIcon(new ImageIcon("src/res/images/pion_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("TourBlanc", new ImageIcon(new ImageIcon("src/res/images/tour_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("CavalierBlanc", new ImageIcon(new ImageIcon("src/res/images/cavalier_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("FouBlanc", new ImageIcon(new ImageIcon("src/res/images/fou_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("DameBlanc", new ImageIcon(new ImageIcon("src/res/images/dame_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("RoiBlanc", new ImageIcon(new ImageIcon("src/res/images/roi_blanc.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("PionNoir", new ImageIcon(new ImageIcon("src/res/images/pion_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("TourNoir", new ImageIcon(new ImageIcon("src/res/images/tour_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("CavalierNoir", new ImageIcon(new ImageIcon("src/res/images/cavalier_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("FouNoir", new ImageIcon(new ImageIcon("src/res/images/fou_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("DameNoir", new ImageIcon(new ImageIcon("src/res/images/dame_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
-        images.put("RoiNoir", new ImageIcon(new ImageIcon("src/res/images/roi_noir.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        try
+        {
+            images.put("PionBlanc", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/pion_blanc.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("TourBlanc", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/tour_blanc.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("CavalierBlanc", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/cavalier_blanc.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("FouBlanc", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/fou_blanc.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("DameBlanc", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/dame_blanc.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("RoiBlanc", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/roi_blanc.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("PionNoir", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/pion_noir.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("TourNoir", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/tour_noir.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("CavalierNoir", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/cavalier_noir.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("FouNoir", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/fou_noir.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("DameNoir", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/dame_noir.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+            images.put("RoiNoir", new ImageIcon(new ImageIcon(getClass().getResource("/res/images/roi_noir.png")).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Impossible de charger les images : " + e.getMessage(), "Erreur de chargement des images", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private IAAbstraite choixModeJeu()
@@ -117,7 +124,6 @@ public class Echec extends javax.swing.JFrame {
         if(reponse == JOptionPane.YES_OPTION)
         {
             JFileChooser chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new File("src/res/configs"));
             int returnVal = chooser.showOpenDialog(null);
             if(returnVal == JFileChooser.APPROVE_OPTION)
             {
@@ -639,7 +645,7 @@ public class Echec extends javax.swing.JFrame {
                                 .addComponent(case_56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(case_57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
