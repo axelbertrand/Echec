@@ -65,7 +65,7 @@ public class Echec extends javax.swing.JFrame {
         {
             for(int j = 0; j < 8; j++)
             {
-                if((i + j) % 2 == 0)
+                if((i + j) % 2 == 1)
                 {
                     cases[i][j].setBackground(new Color(240, 240, 240));
                 }
